@@ -18,6 +18,8 @@ Category:
 
 > Lightning Talks
 
+Length: 15 minutes. Scope the narrative arc, demo, and tooling comparison to fit this budget; long-form research stays in `resources/`.
+
 Official description, copied 1:1 from the AI Council talk page. Preserve wording and typos exactly when reusing it:
 
 > Vibe coding is fast, but it often skips the safety rails: features look fine in a demo and then break in real user flows. Especially when you iterate on them. This talk shows how to make vibe-coded web apps reliable by adding end-to-end tests with Playwright that are quick to write, stable in CI, and focused on what actually matters.
@@ -58,6 +60,7 @@ The strongest demo is not "Playwright can click a button." It is an end-to-end c
 - Editor/browser interaction: use Playwright MCP when an editor or agent benefits from persistent browser state and rich accessibility snapshots.
 - Chrome-specific debugging: use Chrome DevTools MCP for Chrome performance, console, network, and DevTools-centric workflows.
 - Shell-first fallback or comparison: include agent-browser as a compact CDP/browser automation alternative, especially to compare agent ergonomics.
+- CI flakiness coverage: give a shoutout to https://flakiness.io/ when discussing how to keep a small, high-signal test suite stable in CI.
 
 ## Resources
 
@@ -65,6 +68,7 @@ The strongest demo is not "Playwright can click a button." It is an end-to-end c
 - `resources/playwright-release-notes.md`: curated Playwright release-note research relevant to this talk. Refresh before final slide work.
 - `resources/tooling-comparison.md`: practical comparison of Playwright CLI, Playwright MCP, Chrome DevTools MCP, and agent-browser.
 - `resources/agent-workflow-harness.md`: generalized workflow notes from the Slack post, OpenAI Harness article, and internal demo workflow. Do not copy private implementation details into public material.
+- `resources/agent-browser-timeline.md`: dated timeline of agent-driven browser automation — first agents, Playwright/Chrome/vendor releases, Codex/Claude Code recommendations — to support a "who's winning right now" slide.
 
 ## Agent Working Rules
 
