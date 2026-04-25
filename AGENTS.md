@@ -70,6 +70,7 @@ The strongest demo is not "Playwright can click a button." It is an end-to-end c
 - `resources/agent-workflow-harness.md`: generalized workflow notes from the Slack post, OpenAI Harness article, and internal demo workflow. Do not copy private implementation details into public material.
 - `resources/agent-browser-timeline.md`: dated timeline of agent-driven browser automation — first agents, Playwright/Chrome/vendor releases, Codex/Claude Code recommendations — to support a "who's winning right now" slide.
 - `resources/playwright-cli-vs-mcp-token-efficiency.md`: Playwright team's own head-to-head demo — 114k (MCP) vs 26.8k (CLI) tokens on the same task — with the architectural reason (who orchestrates: LLM vs coding agent).
+- `resources/mcp-token-efficiency-evolution.md`: dated record of Anthropic Skills (2025-10-16) and code-execution-with-MCP (2025-11-04, 150k→2k headline) plus MCP spec revisions — "who fixed what and when" for the MCP context-bloat story.
 
 ## Agent Working Rules
 
