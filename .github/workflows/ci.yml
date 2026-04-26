@@ -29,6 +29,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Install Playwright's bundled ffmpeg (for video on failure)
+        run: npx playwright install ffmpeg
+
       - run: npm run build
 
       - run: npx playwright test
