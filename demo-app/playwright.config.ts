@@ -19,9 +19,7 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     channel: "chrome",
-    trace: "on-first-retry",
-    screenshot: "only-on-failure",
-    video: "retain-on-failure",
+    trace: "retain-on-failure",
   },
 
   projects: [
