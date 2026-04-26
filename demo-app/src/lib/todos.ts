@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { db, type TodoRow } from "./db";
+import { getDb, type TodoRow } from "./db";
 
 export type Todo = {
   id: string;
@@ -25,7 +25,7 @@ function toTodo(row: TodoRow): Todo {
 }
 
 export function seedDefaultTodos(userId: string) {
-  const insert = db.prepare(
+  const insert = getDb().prepare(
     `INSERT INTO todos (id, user_id, title, completed, created_at)
      VALUES (?, ?, ?, 0, ?)`
   );
@@ -36,7 +36,7 @@ export function seedDefaultTodos(userId: string) {
 }
 
 export function listTodos(userId: string): Todo[] {
-  const rows = db
+  const rows = getDb()
     .prepare<[string], TodoRow>(
       "SELECT * FROM todos WHERE user_id = ? ORDER BY created_at ASC"
     )
@@ -47,23 +47,31 @@ export function listTodos(userId: string): Todo[] {
 export function createTodo(userId: string, title: string): Todo {
   const id = randomUUID();
   const now = Date.now();
-  db.prepare(
-    `INSERT INTO todos (id, user_id, title, completed, created_at)
+  getDb()
+    .prepare(
+      `INSERT INTO todos (id, user_id, title, completed, created_at)
      VALUES (?, ?, ?, 0, ?)`
-  ).run(id, userId, title, now);
+    )
+    .run(id, userId, title, now);
   return { id, title, completed: false, createdAt: now };
 }
 
 export function toggleTodo(userId: string, id: string): void {
-  db.prepare(
-    `UPDATE todos SET completed = 1 - completed WHERE id = ? AND user_id = ?`
-  ).run(id, userId);
+  getDb()
+    .prepare(
+      `UPDATE todos SET completed = 1 - completed WHERE id = ? AND user_id = ?`
+    )
+    .run(id, userId);
 }
 
 export function deleteTodo(userId: string, id: string): void {
-  db.prepare(`DELETE FROM todos WHERE id = ? AND user_id = ?`).run(id, userId);
+  getDb()
+    .prepare(`DELETE FROM todos WHERE id = ? AND user_id = ?`)
+    .run(id, userId);
 }
 
 export function clearCompleted(userId: string): void {
-  db.prepare(`DELETE FROM todos WHERE user_id = ? AND completed = 1`).run(userId);
+  getDb()
+    .prepare(`DELETE FROM todos WHERE user_id = ? AND completed = 1`)
+    .run(userId);
 }

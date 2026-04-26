@@ -2,18 +2,14 @@ import Database from "better-sqlite3";
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-const DB_PATH = process.env.DATABASE_PATH ?? join(process.cwd(), "data", "app.db");
-
-mkdirSync(dirname(DB_PATH), { recursive: true });
-
 declare global {
   var __db: Database.Database | undefined;
 }
 
-function init(db: Database.Database) {
-  db.pragma("journal_mode = WAL");
-  db.pragma("foreign_keys = ON");
-  db.exec(`
+function init(database: Database.Database) {
+  database.pragma("journal_mode = WAL");
+  database.pragma("foreign_keys = ON");
+  database.exec(`
     CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY,
       email TEXT NOT NULL UNIQUE,
@@ -35,10 +31,20 @@ function init(db: Database.Database) {
   `);
 }
 
-export const db = globalThis.__db ?? new Database(DB_PATH);
-if (!globalThis.__db) {
-  init(db);
-  globalThis.__db = db;
+function open(): Database.Database {
+  const dbPath =
+    process.env.DATABASE_PATH ?? join(process.cwd(), "data", "app.db");
+  mkdirSync(dirname(dbPath), { recursive: true });
+  const database = new Database(dbPath);
+  init(database);
+  return database;
+}
+
+export function getDb(): Database.Database {
+  if (!globalThis.__db) {
+    globalThis.__db = open();
+  }
+  return globalThis.__db;
 }
 
 export type UserRow = {
