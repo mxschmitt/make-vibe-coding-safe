@@ -234,10 +234,10 @@ layout: default
 
 | Tool | Best for | GitHub stars |
 | --- | --- | ---: |
-| **Playwright CLI** + skills | Coding agents in a terminal | 9.3k |
-| **Playwright MCP** | Editor agents, accessibility snapshots | 31.4k |
-| **Chrome DevTools MCP** | Chrome-specific perf / console / network | 37.2k |
-| **agent-browser** (Vercel Labs) | Designed for AI agents · compact text output | 30.6k |
+| **Playwright CLI** + skills | Coding agents in a terminal | 9.6k |
+| **Playwright MCP** | Editor agents, accessibility snapshots | 31.7k |
+| **Chrome DevTools MCP** | Chrome-specific perf / console / network | 37.6k |
+| **agent-browser** (Vercel Labs) | Designed for AI agents · compact text output | 30.9k |
 
 </div>
 
