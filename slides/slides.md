@@ -30,9 +30,19 @@ layout: center
 class: text-center
 ---
 
-# The demo works.
+# The vibe-coded feature works.
 
-<div class="mt-8 text-2xl opacity-75">Until the next iteration breaks it.</div>
+<div class="mt-6 text-2xl opacity-75">Until the next iteration breaks it.</div>
+
+<div class="mt-10 flex justify-center">
+  <img
+    src="https://media.giphy.com/media/z9AUvhAEiXOqA/giphy.gif"
+    alt="This is fine"
+    referrerpolicy="no-referrer"
+    class="rounded-lg"
+    style="max-height: 260px;"
+  />
+</div>
 
 <!--
 (0:30) Every vibe-coded feature has a demo moment: it works once, on the happy path, while you're watching. The bug is in the second iteration — the one the agent made after you walked away. Manual clicking doesn't catch that. Code review doesn't catch that. Generic unit tests don't catch that. End-to-end browser tests do.
@@ -42,52 +52,73 @@ class: text-center
 layout: two-cols-header
 ---
 
-# What we have today
+# Agents already do most of this
 
 ::left::
 
-### The agent can build
-- writes code
-- edits files
-- runs a dev server
-- reads a stack trace
+### Table stakes in 2026
+- Run commands in a shell
+- Read and write files
+- Iterate on a dev server
+- Parse a stack trace
+
+<div class="mt-3 text-xs opacity-60">Claude Code · Codex · Cursor · Cline</div>
 
 ::right::
 
-### What's missing
-- **browser state the agent can see**
-- **tests the agent can run**
-- **failure receipts a human can review fast**
+### What Playwright uniquely gives
+- **Browser state** the agent can query by role and text
+- **Deterministic test commands** to run on every iteration
+- **Traces, screenshots, screencasts** a human can review in seconds
 
 <!--
-(1:30) The gap isn't the model or the editor — it's the feedback loop. Agents can already ship features. What they can't yet do confidently is prove the feature works end-to-end and prove it still works on iteration two. That's what we're closing today.
+(1:30) Don't start this slide by saying "agents can't do X" — they can. The real point is that shell access plus file I/O aren't enough to prove a browser-rendered UI is correct. Playwright fills that specific gap: it turns the browser into something the agent can see and something a human can audit in a few seconds of scrubbing a trace. That's the lane.
 -->
 
 ---
 layout: default
 ---
 
-# How we got here — a 60-second timeline
+# How we got here — five eras, 60 seconds
 
-<div class="text-sm mt-6 grid grid-cols-2 gap-x-10 gap-y-2">
-
-<div class="opacity-60">2020-05</div><div>Playwright 1.0 — cross-browser test runner</div>
-<div class="opacity-60">2022-09</div><div>natbot — first "drive a browser with GPT-3"</div>
-<div class="opacity-60">2024-10</div><div>Anthropic Computer Use</div>
-<div class="opacity-60">2024-11</div><div>Model Context Protocol announced</div>
-<div class="opacity-60">2025-01</div><div>OpenAI Operator · Amazon Nova Act (Mar)</div>
-<div class="opacity-60">2025-03</div><div><strong>Playwright MCP</strong> first release</div>
-<div class="opacity-60">2025-09</div><div><strong>Chrome DevTools MCP</strong> first release</div>
-<div class="opacity-60">2025-10</div><div>Playwright <strong>Test Agents</strong> (planner / generator / healer)</div>
-<div class="opacity-60">2025-10</div><div>Anthropic <strong>Skills</strong> — progressive tool loading</div>
-<div class="opacity-60">2025-11</div><div>Anthropic "Code execution with MCP" — 150k → 2k tokens</div>
-<div class="opacity-60">2026-01</div><div>agent-browser (Vercel Labs) first release</div>
-<div class="opacity-60">2026-04</div><div>Playwright 1.59 — <code>browser.bind()</code>, <code>--debug=cli</code>, screencast chapters</div>
-
+<div class="mt-12 relative">
+  <div class="absolute left-0 right-0 top-4 h-0.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500"></div>
+  <div class="grid grid-cols-5 gap-4 relative">
+    <div class="text-center">
+      <div class="mx-auto h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-indigo-500/20"></div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">pre-2024</div>
+      <div class="mt-2 text-sm font-medium">Browser automation</div>
+      <div class="mt-1 text-xs opacity-70">Selenium · Puppeteer · Playwright</div>
+    </div>
+    <div class="text-center">
+      <div class="mx-auto h-4 w-4 rounded-full bg-indigo-400 ring-4 ring-indigo-400/20"></div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2024 Q4</div>
+      <div class="mt-2 text-sm font-medium">Agents get browsers</div>
+      <div class="mt-1 text-xs opacity-70">Computer Use · MCP announced</div>
+    </div>
+    <div class="text-center">
+      <div class="mx-auto h-4 w-4 rounded-full bg-violet-500 ring-4 ring-violet-500/20"></div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2025 H1</div>
+      <div class="mt-2 text-sm font-medium">Everyone ships</div>
+      <div class="mt-1 text-xs opacity-70">Playwright MCP · Operator · Nova Act</div>
+    </div>
+    <div class="text-center">
+      <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-500 ring-4 ring-fuchsia-500/20"></div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2025 Q4</div>
+      <div class="mt-2 text-sm font-medium">Context pressure answered</div>
+      <div class="mt-1 text-xs opacity-70">Test Agents · Skills · code-exec-over-MCP</div>
+    </div>
+    <div class="text-center">
+      <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-400 ring-4 ring-fuchsia-400/20"></div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">today</div>
+      <div class="mt-2 text-sm font-medium">This talk's moment</div>
+      <div class="mt-1 text-xs opacity-70">Playwright 1.59 · Chrome DevTools MCP · agent-browser</div>
+    </div>
+  </div>
 </div>
 
 <!--
-(3:00) Eighteen months ago browser tools for coding agents didn't exist. Today they're converging. Three MCP-based tools — Playwright MCP, Chrome DevTools MCP, agent-browser — plus Anthropic Skills and code-execution-over-MCP to stop context from exploding. The tooling is ready. The question is what to do with it.
+(3:00) Eighteen months ago browser tools for coding agents didn't exist. Today they're converging. Five eras, one breath: browser automation was already a thing before agents mattered; then Computer Use and MCP taught agents to see a page; then every vendor shipped their own take; then Anthropic shipped Skills and code-execution-over-MCP to stop context from exploding; and here we are. The tooling is ready. Question is what you do with it.
 -->
 
 ---
@@ -95,27 +126,96 @@ layout: center
 class: text-center
 ---
 
-# Demo
+# Demo — 7 minutes, two halves
 
-<div class="mt-6 text-xl opacity-75">
-demo-app: Next.js todos.<br/>
-Tests pass on <code>main</code>.<br/>
-Agent gets broken code on <code>demo/broken-konami</code>.
+<div class="mt-10 grid grid-cols-2 gap-8">
+
+<div class="p-6 rounded-lg border border-indigo-500/30 bg-indigo-900/10">
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">① Authoring · ~3 min</div>
+  <div class="text-lg font-medium">Agent writes a test</div>
+  <div class="mt-3 text-sm opacity-80">
+    New feature request → agent writes the Playwright spec → runs it → green.<br/>
+    <span class="opacity-60">Claude Code · Playwright CLI + skills.</span>
+  </div>
+</div>
+
+<div class="p-6 rounded-lg border border-fuchsia-500/30 bg-fuchsia-900/10">
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② Debug loop · ~4 min</div>
+  <div class="text-lg font-medium">Agent fixes a failing test</div>
+  <div class="mt-3 text-sm opacity-80">
+    Existing test fails on <code>demo/broken-konami</code> → agent reads the trace → finds the bug → reruns. Green.<br/>
+    <span class="opacity-60">Trace is the key moment — not the source.</span>
+  </div>
+</div>
+
 </div>
 
 <!--
-(4:00) Seven minutes. This is the talk. Before I start: watch for the agent reading the trace, not guessing at the bug. That's the whole difference.
+(4:00) Seven minutes, split 3/4. Keep the beats as cues, not a script.
 
-Rough flow — keep these as beats, not a script:
-  1. Show demo-app running. Sign up. Show the Konami easter egg on main — banner appears. "This is what the feature should do."
-  2. git checkout demo/broken-konami. Note I haven't told the agent what's broken.
-  3. In Claude Code: "run the Playwright tests, find what's broken, fix it." Let it go.
-  4. CLI runs. Konami test fails. Agent reads the failure, opens the trace (playwright show-trace), inspects key sequence.
-  5. Agent reads konami-listener.tsx, spots the L/R swap, fixes it.
-  6. Rerun. Green. Screenshot or screencast in hand.
-  7. Land the point: the agent wasn't guessing. It saw the real browser, saw the real failure, left receipts.
+Half ①  Authoring (~3 min)
+  1. Show demo-app running. Pick one missing journey (e.g. "log out from the landing page," or "can't sign up with a duplicate email").
+  2. Prompt Claude Code: "add a Playwright test for <journey>, then run it."
+  3. Let the agent navigate with the CLI, write the spec file, run it. Highlight: the CLI puts snapshot/screenshot on disk; agent decides what to read.
+  4. Green. Point at the committed spec. "That's the artifact."
 
-Budget: leave 30 seconds for narration between steps. If the demo drifts long, cut the rerun — the fix-and-run is the beat that matters.
+Half ②  Debug loop (~4 min)
+  1. git checkout demo/broken-konami. Konami test now fails.
+  2. Prompt: "run the Playwright tests, find what's broken, fix it."
+  3. Let it run. Konami test fails. Agent opens the trace (playwright show-trace) — emphasize: it's reading the failure, not the source.
+  4. Agent spots the L/R swap in konami-listener.tsx, fixes it.
+  5. Rerun. Green. Show the trace-viewer timeline as the receipt.
+  6. Land: "agent wasn't guessing. Saw the real browser, saw the real failure, left receipts."
+
+If you run long, cut ①'s rerun or ②'s final green — the fix moment is the one beat that must land.
+-->
+
+---
+layout: default
+---
+
+# Browser tools for coding agents · 2026
+
+<div class="mt-8 text-sm">
+
+| Tool | Best for | GitHub stars |
+| --- | --- | ---: |
+| **Playwright CLI** + skills | Coding agents in a terminal | 9.3k |
+| **Playwright MCP** | Editor agents, accessibility snapshots | 31.4k |
+| **Chrome DevTools MCP** | Chrome-specific perf / console / network | 37.2k |
+| **agent-browser** (Vercel Labs) | Shell-first, compact snapshots | 30.6k |
+
+</div>
+
+<div class="mt-8 text-center text-base opacity-90">
+The durable artifact is the test suite.<br/>
+The browser tool is how the agent sees — pick per use case.
+</div>
+
+<!--
+(11:00) One-minute overview of the landscape. Chrome DevTools MCP leads on raw stars. Playwright MCP leads in vendor recommendations for test authoring. agent-browser is the youngest (January 2026 public) and leads on shell ergonomics. But — don't get lost in the tool war. The durable artifact is the Playwright suite; everything else is how the agent produces it.
+-->
+
+---
+layout: default
+---
+
+# Adoption — last 12 months
+
+<div class="mt-4 flex justify-center">
+  <iframe
+    src="https://npmtrends.com/@playwright/mcp-vs-@playwright/cli-vs-chrome-devtools-mcp-vs-agent-browser"
+    style="width: 100%; height: 440px; border: 0; border-radius: 8px;"
+    title="npm download trends for agent browser tooling"
+  ></iframe>
+</div>
+
+<div class="mt-3 text-xs opacity-60 text-center">
+Live embed from npmtrends.com · fallback screenshot in the repo if WiFi misbehaves.
+</div>
+
+<!--
+(11:45) Live embed — if WiFi dies, I'll point at the fallback screenshot. The shape you're looking for: three of the four are on steep ramps; agent-browser shows up late because it only went public in January. Use this slide to narrate "the category is converging" rather than reading numbers.
 -->
 
 ---
