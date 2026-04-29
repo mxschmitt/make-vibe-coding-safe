@@ -22,7 +22,61 @@ Max Schmitt · AI Council SF 2026 · May 13
 </div>
 
 <!--
-Hi — I'm Max. Ex-Playwright at Microsoft for five years, now at Amazon AGI Labs on Nova Act. Fifteen minutes, one demo, one argument: vibe coding is fast to create and hard to trust, and the fix is a tiny Playwright suite an agent can run. Let's go.
+Hi — I'm Max. Fifteen minutes, one demo, one argument: vibe coding is fast to create and hard to trust, and the fix is a tiny Playwright suite an agent can run. Let's go.
+-->
+
+---
+layout: default
+---
+
+# About me
+
+<div class="mt-6 grid grid-cols-[auto_1fr_1fr] gap-10 items-start">
+
+<div class="flex-shrink-0">
+  <img
+    src="/max.jpg"
+    alt="Max Schmitt"
+    class="rounded-xl"
+    style="width: 240px; aspect-ratio: 4/3; object-fit: cover; border: 2px solid rgba(122, 162, 247, 0.8);"
+  />
+</div>
+
+<div>
+
+### Max Schmitt
+<div class="text-base opacity-75 mt-1">Member of Technical Staff · Amazon AGI</div>
+
+<div class="mt-5 text-sm leading-relaxed">
+Building AI agents for browser use — <strong>Amazon Nova Act</strong>.
+
+<div class="mt-3">
+Previously, 5 years as a core contributor to <strong>Microsoft Playwright</strong> — Python, .NET, Go, core framework.
+</div>
+
+<div class="mt-3 opacity-60">San Francisco · max.sh · @mxschmitt</div>
+</div>
+
+</div>
+
+<div class="text-sm">
+
+<div class="text-xs uppercase tracking-wider opacity-50 mb-3">Open source I've worked on</div>
+
+<div class="space-y-2">
+  <div><strong>Playwright</strong> — 87.6k★</div>
+  <div><strong>playwright-python</strong> — 14.6k★</div>
+  <div><strong>playwright-go</strong> — 3.3k★</div>
+  <div><strong>playwright-dotnet</strong> — 2.9k★</div>
+  <div><strong>action-tmate</strong> — 3.5k★</div>
+</div>
+
+</div>
+
+</div>
+
+<!--
+(0:30) Twenty-second intro. I'm Max. Worked on Playwright at Microsoft for five years, now at Amazon AGI on Nova Act — building AI agents that drive browsers. Which means I have opinions on both halves of this talk. Moving on.
 -->
 
 ---
@@ -69,7 +123,7 @@ layout: two-cols-header
 ### What Playwright uniquely gives
 - **Browser state** the agent can query by role and text
 - **Deterministic test commands** to run on every iteration
-- **Traces, screenshots, screencasts** a human can review in seconds
+- **Traces, screenshots, videos** a human can review in seconds
 
 <!--
 (1:30) Don't start this slide by saying "agents can't do X" — they can. The real point is that shell access plus file I/O aren't enough to prove a browser-rendered UI is correct. Playwright fills that specific gap: it turns the browser into something the agent can see and something a human can audit in a few seconds of scrubbing a trace. That's the lane.
@@ -105,7 +159,7 @@ layout: default
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-500 ring-4 ring-fuchsia-500/20"></div>
       <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2025 Q4</div>
-      <div class="mt-2 text-sm font-medium">Context pressure answered</div>
+      <div class="mt-2 text-sm font-medium">Tools learn to fit in context</div>
       <div class="mt-1 text-xs opacity-70">Test Agents · Skills · code-exec-over-MCP</div>
     </div>
     <div class="text-center">
@@ -118,7 +172,7 @@ layout: default
 </div>
 
 <!--
-(3:00) Eighteen months ago browser tools for coding agents didn't exist. Today they're converging. Five eras, one breath: browser automation was already a thing before agents mattered; then Computer Use and MCP taught agents to see a page; then every vendor shipped their own take; then Anthropic shipped Skills and code-execution-over-MCP to stop context from exploding; and here we are. The tooling is ready. Question is what you do with it.
+(3:00) Eighteen months ago browser tools for coding agents didn't exist. Today they're converging. Five eras, one breath: browser automation was already a thing before agents mattered; then Computer Use and MCP taught agents to see a page; then every vendor shipped their own take; then Anthropic shipped Skills and code-execution-over-MCP so MCP servers stopped blowing up the context window; and here we are. The tooling is ready. Question is what you do with it.
 -->
 
 ---
@@ -144,7 +198,7 @@ class: text-center
   <div class="text-lg font-medium">Agent fixes a failing test</div>
   <div class="mt-3 text-sm opacity-80">
     Existing test fails on <code>demo/broken-konami</code> → agent reads the trace → finds the bug → reruns. Green.<br/>
-    <span class="opacity-60">Trace is the key moment — not the source.</span>
+    <span class="opacity-60">The agent inspects the trace viewer — not re-reads the source.</span>
   </div>
 </div>
 
@@ -183,17 +237,18 @@ layout: default
 | **Playwright CLI** + skills | Coding agents in a terminal | 9.3k |
 | **Playwright MCP** | Editor agents, accessibility snapshots | 31.4k |
 | **Chrome DevTools MCP** | Chrome-specific perf / console / network | 37.2k |
-| **agent-browser** (Vercel Labs) | Shell-first, compact snapshots | 30.6k |
+| **agent-browser** (Vercel Labs) | Designed for AI agents · compact text output | 30.6k |
 
 </div>
 
 <div class="mt-8 text-center text-base opacity-90">
-The durable artifact is the test suite.<br/>
-The browser tool is how the agent sees — pick per use case.
+Tools change every few months.<br/>
+The test suite lives in your repo for years.<br/>
+<span class="opacity-70">Pick the tool that fits today — the tests are what you keep.</span>
 </div>
 
 <!--
-(11:00) One-minute overview of the landscape. Chrome DevTools MCP leads on raw stars. Playwright MCP leads in vendor recommendations for test authoring. agent-browser is the youngest (January 2026 public) and leads on shell ergonomics. But — don't get lost in the tool war. The durable artifact is the Playwright suite; everything else is how the agent produces it.
+(11:00) One-minute overview of the landscape. Chrome DevTools MCP leads on raw stars. Playwright MCP leads in vendor recommendations for test authoring. agent-browser is the youngest (January 2026 public) and pitches itself explicitly at AI agents — compact text output, accessibility-tree refs, native Rust. But — don't get lost in the tool war. These tools are ~1 year old; the Playwright spec file in your repo will still be running a year from now. That's what you keep.
 -->
 
 ---
@@ -203,19 +258,22 @@ layout: default
 # Adoption — last 12 months
 
 <div class="mt-4 flex justify-center">
-  <iframe
-    src="https://npmtrends.com/@playwright/mcp-vs-@playwright/cli-vs-chrome-devtools-mcp-vs-agent-browser"
-    style="width: 100%; height: 440px; border: 0; border-radius: 8px;"
-    title="npm download trends for agent browser tooling"
-  ></iframe>
+  <img
+    src="/npmtrends.png"
+    alt="npm download trends: Playwright MCP, Playwright CLI, Chrome DevTools MCP, agent-browser"
+    class="rounded-lg"
+    style="max-height: 420px;"
+  />
 </div>
 
 <div class="mt-3 text-xs opacity-60 text-center">
-Live embed from npmtrends.com · fallback screenshot in the repo if WiFi misbehaves.
+  <a href="https://npmtrends.com/@playwright/mcp-vs-@playwright/cli-vs-chrome-devtools-mcp-vs-agent-browser">
+    npmtrends.com · @playwright/mcp · @playwright/cli · chrome-devtools-mcp · agent-browser
+  </a>
 </div>
 
 <!--
-(11:45) Live embed — if WiFi dies, I'll point at the fallback screenshot. The shape you're looking for: three of the four are on steep ramps; agent-browser shows up late because it only went public in January. Use this slide to narrate "the category is converging" rather than reading numbers.
+(11:45) Category is converging. Three of the four are on steep ramps; agent-browser shows up late because it only went public in January. Don't read numbers to the audience — point at the shape.
 -->
 
 ---
@@ -336,7 +394,7 @@ layout: default
 <div>✔ One spec per critical journey. Three, not thirty.</div>
 <div>✔ Run on every commit. Trace on failure.</div>
 <div>✔ Treat flake as a bug — <a href="https://flakiness.io/" class="underline decoration-dotted">flakiness.io</a> for CI health.</div>
-<div>✔ Screenshots, traces, screencasts = reviewable receipts.</div>
+<div>✔ Screenshots, traces, videos = reviewable receipts.</div>
 <div>✔ The agent doesn't own the test suite. You do.</div>
 
 </div>
