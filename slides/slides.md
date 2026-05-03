@@ -120,38 +120,43 @@ layout: two-cols-header
 class: pt-[8vh]
 ---
 
-# Agents already do most of this
+# What agents already do — and the gap
 
 ::left::
 
-### Table stakes in 2026
-- Run commands in a shell
-- Read and write files
-- Iterate on a dev server
-- Parse a stack trace
+### Works out of the box
+- **Codebase context** — reads your project, edits across files
+- **Shell access** — runs builds, starts dev servers, installs deps
+- **Error loop** — reads a stack trace, fixes, retries until it compiles
+- **Git workflow** — commits, branches, opens PRs
 
-<div class="mt-3 text-xs opacity-60">Claude Code · Codex · Cursor · Cline</div>
+<div class="mt-3 text-xs opacity-60">Claude Code · Codex · Cursor · …</div>
 
 ::right::
 
-### What Playwright uniquely gives
-- **Browser state** the agent can query by role and text
-- **Deterministic test commands** to run on every iteration
-- **Traces, screenshots, videos** a human can review in seconds
+<div class="pl-4 border-l-2 border-indigo-500/30">
+
+### Add a browser to the loop
+- **Browser state** — the agent sees the rendered page, not just source code
+- **Instant verification** — Vite/Next.js hot-reloads, agent checks the result in seconds
+- **Debug browser-only bugs** — React races, hydration mismatches, layout shifts
+- **Playwright CLI / MCP** — traces, screenshots, a11y locators for stable selectors
+
+</div>
 
 <!--
-(1:30) Don't start this slide by saying "agents can't do X" — they can. The real point is that shell access plus file I/O aren't enough to prove a browser-rendered UI is correct. Playwright fills that specific gap: it turns the browser into something the agent can see and something a human can audit in a few seconds of scrubbing a trace. That's the lane.
+(1:30) Don't start by saying "agents can't do X" — they can do everything on the left. The point is that compiling is not the same as correct. When the agent has a browser, it sees what the user sees: hot-reload changes verified instantly, React races caught live, layout shifts visible. Playwright CLI and MCP are the bridges — traces, screenshots, a11y locators that survive refactors. Two audiences, one artifact.
 -->
 
 ---
 layout: center
 ---
 
-# How we got here — five eras, 60 seconds
+# How we got here
 
 <div class="mt-8 relative">
   <div class="absolute left-0 right-0 top-2 h-0.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500"></div>
-  <div class="grid grid-cols-5 gap-4 relative">
+  <div class="grid grid-cols-4 gap-6 relative">
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-indigo-500/20"></div>
       <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">pre-2024</div>
@@ -166,27 +171,21 @@ layout: center
     </div>
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-violet-500 ring-4 ring-violet-500/20"></div>
-      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2025 H1</div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2025</div>
       <div class="mt-2 text-sm font-medium">Everyone ships</div>
-      <div class="mt-1 text-xs opacity-70">Playwright MCP · Operator · Nova Act</div>
+      <div class="mt-1 text-xs opacity-70">Playwright MCP · Operator · Nova Act · Test Agents</div>
     </div>
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-500 ring-4 ring-fuchsia-500/20"></div>
-      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2025 Q4</div>
-      <div class="mt-2 text-sm font-medium">Tools learn to fit in context</div>
-      <div class="mt-1 text-xs opacity-70">Test Agents · Skills · code-exec-over-MCP</div>
-    </div>
-    <div class="text-center">
-      <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-400 ring-4 ring-fuchsia-400/20"></div>
-      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">today</div>
-      <div class="mt-2 text-sm font-medium">This talk's moment</div>
-      <div class="mt-1 text-xs opacity-70">Playwright 1.59 · Chrome DevTools MCP · agent-browser</div>
+      <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2026</div>
+      <div class="mt-2 text-sm font-medium">Agents can see the browser</div>
+      <div class="mt-1 text-xs opacity-70">Playwright CLI · Chrome DevTools MCP · agent-browser</div>
     </div>
   </div>
 </div>
 
 <!--
-(3:00) Eighteen months ago browser tools for coding agents didn't exist. Today they're converging. Five eras, one breath: browser automation was already a thing before agents mattered; then Computer Use and MCP taught agents to see a page; then every vendor shipped their own take; then Anthropic shipped Skills and code-execution-over-MCP so MCP servers stopped blowing up the context window; and here we are. The tooling is ready. Question is what you do with it.
+(3:00) Sixty-second flyover. Browser automation existed long before agents — Selenium, Puppeteer, Playwright. Late 2024, agents got access: Computer Use showed an LLM driving a desktop, MCP gave tools a protocol. 2025, everyone shipped their version — Playwright MCP, Operator, Nova Act, Test Agents. Now in 2026, the tooling works: Playwright CLI, Chrome DevTools MCP, agent-browser. The agent can see the browser. Let me show you.
 -->
 
 ---
