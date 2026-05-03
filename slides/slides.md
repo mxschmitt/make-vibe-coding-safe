@@ -31,7 +31,7 @@ layout: default
 
 # About me
 
-<div class="mt-6 grid grid-cols-[auto_1fr_1fr] gap-10 items-start">
+<div class="mt-[14vh] grid grid-cols-[auto_1fr_1fr] gap-10 items-start">
 
 <div class="flex-shrink-0">
   <img
@@ -54,7 +54,7 @@ Building AI agents for browser use — <strong>Amazon Nova Act</strong>.
 Previously, 5 years as a core contributor to <strong>Microsoft Playwright</strong> — Python, .NET, Go, core framework.
 </div>
 
-<div class="mt-3 opacity-60">San Francisco · max.sh · @mxschmitt</div>
+<div class="mt-3 opacity-60">San Francisco · max.sh · @mxschmitt · <a href="https://www.linkedin.com/in/max-schmitt">LinkedIn</a></div>
 </div>
 
 </div>
@@ -135,7 +135,7 @@ layout: default
 
 # How we got here — five eras, 60 seconds
 
-<div class="mt-12 relative">
+<div class="mt-[20vh] relative">
   <div class="absolute left-0 right-0 top-4 h-0.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500"></div>
   <div class="grid grid-cols-5 gap-4 relative">
     <div class="text-center">
@@ -389,7 +389,7 @@ layout: default
 
 # Keep the suite small. Keep it green.
 
-<div class="mt-10 space-y-6 text-lg">
+<div class="mt-10 space-y-6 text-lg max-w-2xl mx-auto">
 
 <div>✔ One spec per critical journey. Three, not thirty.</div>
 <div>✔ Run on every commit. Trace on failure.</div>
