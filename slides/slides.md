@@ -296,28 +296,29 @@ layout: center
 
 # This video went viral for a reason
 
-<div class="grid grid-cols-2 gap-8 mt-6">
+<div class="grid grid-cols-[1fr_1.2fr] gap-6 mt-4 items-center">
 
-<div class="p-6 rounded-lg bg-red-900/20 border border-red-500/30">
-  <div class="text-sm opacity-60 mb-2">Playwright MCP</div>
-  <div class="text-6xl font-bold text-red-400">114k</div>
-  <div class="text-sm mt-2 opacity-75">tokens</div>
+<div>
+  <a href="https://www.youtube.com/watch?v=Be0ceKN81S8" target="_blank">
+    <img src="/playwright-cli-vs-mcp-video.png" class="rounded-lg shadow-xl" alt="Playwright CLI vs MCP — 100K views" />
+  </a>
+  <div class="text-xs opacity-50 mt-2 text-center">100K views · Playwright channel</div>
 </div>
 
-<div class="p-6 rounded-lg bg-green-900/20 border border-green-500/30">
-  <div class="text-sm opacity-60 mb-2">Playwright CLI + skills</div>
-  <div class="text-6xl font-bold text-green-400">26.8k</div>
-  <div class="text-sm mt-2 opacity-75">tokens</div>
+<div class="space-y-4">
+  <div class="p-4 rounded-lg bg-red-900/20 border border-red-500/30">
+    <div class="text-sm opacity-60 mb-1">Playwright MCP</div>
+    <div class="text-5xl font-bold text-red-400">114k <span class="text-lg font-normal opacity-75">tokens</span></div>
+  </div>
+  <div class="p-4 rounded-lg bg-green-900/20 border border-green-500/30">
+    <div class="text-sm opacity-60 mb-1">Playwright CLI + skills</div>
+    <div class="text-5xl font-bold text-green-400">26.8k <span class="text-lg font-normal opacity-75">tokens</span></div>
+  </div>
+  <div class="text-sm opacity-60">
+    MCP routes state <em>through</em> the LLM. CLI routes state <em>around</em> it.
+  </div>
 </div>
 
-</div>
-
-<div class="mt-8 text-sm opacity-75 text-center">
-Open playwright.dev · search "locators" · check 4 language docs · screenshot each.
-</div>
-
-<div class="mt-4 text-sm opacity-60 text-center">
-MCP routes state <em>through</em> the LLM. CLI routes state <em>around</em> it.
 </div>
 
 <!--
