@@ -376,22 +376,22 @@ layout: default
 </thead>
 <tbody class="text-lg">
 <tr>
-  <td class="text-left py-2">Context tokens</td>
-  <td class="py-2 text-red-400 font-bold">1,377k</td>
-  <td class="py-2 text-green-400 font-bold">524k</td>
-  <td class="py-2 text-yellow-400 font-bold">976k</td>
-</tr>
-<tr>
   <td class="text-left py-2">Cost</td>
-  <td class="py-2">$0.80</td>
-  <td class="py-2">$0.36</td>
-  <td class="py-2">$0.44</td>
+  <td class="py-2 text-red-400 font-bold">$0.80</td>
+  <td class="py-2 text-green-400 font-bold">$0.36</td>
+  <td class="py-2 text-yellow-400 font-bold">$0.44</td>
 </tr>
 <tr>
   <td class="text-left py-2">Turns</td>
   <td class="py-2">53</td>
   <td class="py-2">18.7</td>
   <td class="py-2">33.0</td>
+</tr>
+<tr>
+  <td class="text-left py-2">Context tokens</td>
+  <td class="py-2">1,377k</td>
+  <td class="py-2">524k</td>
+  <td class="py-2">976k</td>
 </tr>
 <tr>
   <td class="text-left py-2">Duration</td>
@@ -408,7 +408,7 @@ Same task as the viral video. Claude Agent SDK, Sonnet, 3 runs each. This is a c
 </div>
 
 <!--
-(12:00) Same task as the Playwright team video. We ran it on the old Claude Code SDK from September 2025 — before Skills, before code-execution-with-MCP. MCP burned through 1.4M context tokens in 53 turns. Then we ran on the current SDK. MCP uses 524k context tokens in 19 turns. CLI uses 976k in 33 turns. MCP improved 2.6× from old to new SDK, and is now 1.9× cheaper than CLI. Total flip. Is this an eval? It's a cost benchmark — same prompt, same model, multiple runs, quantitative output. A full eval would also grade correctness. The code is on GitHub if you want to run it yourself.
+(12:00) Same task as the Playwright team video. We ran it on the old Claude Code SDK from September 2025 — before Skills, before code-execution-with-MCP. Old MCP cost $0.80 per run and needed 53 turns. Current MCP costs $0.36 in 19 turns. CLI costs $0.44 in 33 turns. MCP went from most expensive to cheapest — 2.2× cheaper than it was, and now 18% cheaper than CLI. Why cost and not raw tokens? Because cached tokens cost ~10× less than fresh ones, and MCP's improvement comes partly from better caching. Cost accounts for that; raw token counts don't. Is this an eval? It's a cost benchmark — same prompt, same model, multiple runs, quantitative output. A full eval would also grade correctness. The code is on GitHub.
 -->
 
 ---
