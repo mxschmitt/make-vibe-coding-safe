@@ -238,6 +238,39 @@ If you run long, cut ①'s rerun or ②'s final green — the fix moment is the 
 -->
 
 ---
+layout: center
+class: text-center
+---
+
+# What you just saw
+
+<div class="mt-10 grid grid-cols-2 gap-8">
+
+<div class="p-6 rounded-lg border border-indigo-500/30 bg-indigo-900/10">
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">① Authoring</div>
+  <div class="text-lg font-medium mt-3">The agent authored a test in under a minute.</div>
+  <div class="mt-4 text-sm opacity-80">
+    The spec file stays in your repo and runs on every commit.<br/>
+    That's the artifact — not the chat log.
+  </div>
+</div>
+
+<div class="p-6 rounded-lg border border-fuchsia-500/30 bg-fuchsia-900/10">
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② Debug loop</div>
+  <div class="text-lg font-medium mt-3">The agent read the real failure — not a stack trace.</div>
+  <div class="mt-4 text-sm opacity-80">
+    <code>npx playwright trace</code> — new in 1.59.<br/>
+    The Playwright team got us covered.
+  </div>
+</div>
+
+</div>
+
+<!--
+(11:00) Twenty seconds max. Let the demo breathe. Left panel: the test file is what you keep. Right panel: 1.59 made the trace CLI possible — that's what let the agent read the failure instead of guessing. Don't linger; move to the tooling slide.
+-->
+
+---
 layout: default
 ---
 
