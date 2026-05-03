@@ -52,10 +52,17 @@ export function buildReport(
   taskPrompt: string,
   model: string,
 ): ComparisonReport {
+  const mcpOldRuns = runs.filter((r) => r.variant === "mcp-old");
   const mcpRuns = runs.filter((r) => r.variant === "mcp");
   const cliRuns = runs.filter((r) => r.variant === "cli");
-  const mcpStats = computeStats(mcpRuns, "mcp");
-  const cliStats = computeStats(cliRuns, "cli");
+
+  const stats: Record<string, AggregateStats> = {};
+  if (mcpOldRuns.length > 0) stats["mcp-old"] = computeStats(mcpOldRuns, "mcp-old");
+  if (mcpRuns.length > 0) stats.mcp = computeStats(mcpRuns, "mcp");
+  if (cliRuns.length > 0) stats.cli = computeStats(cliRuns, "cli");
+
+  const mcpStats = stats.mcp ?? stats["mcp-old"]!;
+  const cliStats = stats.cli ?? mcpStats;
 
   return {
     timestamp: new Date().toISOString(),
@@ -63,6 +70,7 @@ export function buildReport(
     model,
     runs,
     summary: {
+      ...stats,
       mcp: mcpStats,
       cli: cliStats,
       tokenRatio:
@@ -85,66 +93,63 @@ function fmt(n: number): string {
   return n.toLocaleString("en-US");
 }
 
+const VARIANT_LABELS: Record<string, string> = {
+  "mcp-old": "MCP (old SDK)",
+  mcp: "MCP",
+  cli: "CLI",
+};
+
 export function printSummary(report: ComparisonReport): void {
-  const { mcp, cli, tokenRatio, contextTokenRatio, costRatio } = report.summary;
+  const summary = report.summary as Record<string, AggregateStats | number>;
+  const variants = (["mcp-old", "mcp", "cli"] as const).filter(
+    (v) => summary[v] && typeof summary[v] === "object",
+  );
 
   console.log("\n=== Token Efficiency Benchmark ===\n");
   console.log(`Model: ${report.model}`);
-  console.log(`Runs per variant: ${mcp.count}\n`);
+  console.log(
+    `Runs per variant: ${(summary[variants[0]!] as AggregateStats).count}\n`,
+  );
+
+  const headers = ["Metric", ...variants.map((v) => VARIANT_LABELS[v]!)];
 
   const rows = [
-    ["Metric", "MCP", "CLI", "Ratio"],
+    headers,
     [
       "Context tokens (all)",
-      fmt(mcp.meanTotalContextTokens),
-      fmt(cli.meanTotalContextTokens),
-      `${contextTokenRatio.toFixed(2)}x`,
+      ...variants.map((v) => fmt((summary[v] as AggregateStats).meanTotalContextTokens)),
     ],
     [
       "  input (cache miss)",
-      fmt(mcp.meanInputTokens),
-      fmt(cli.meanInputTokens),
-      "",
+      ...variants.map((v) => fmt((summary[v] as AggregateStats).meanInputTokens)),
     ],
     [
       "  cache read",
-      fmt(mcp.meanCacheReadTokens),
-      fmt(cli.meanCacheReadTokens),
-      "",
+      ...variants.map((v) => fmt((summary[v] as AggregateStats).meanCacheReadTokens)),
     ],
     [
       "  cache write",
-      fmt(mcp.meanCacheWriteTokens),
-      fmt(cli.meanCacheWriteTokens),
-      "",
+      ...variants.map((v) => fmt((summary[v] as AggregateStats).meanCacheWriteTokens)),
     ],
     [
       "  output",
-      fmt(mcp.meanOutputTokens),
-      fmt(cli.meanOutputTokens),
-      "",
+      ...variants.map((v) => fmt((summary[v] as AggregateStats).meanOutputTokens)),
     ],
     [
       "Cost (USD)",
-      `$${mcp.meanCostUsd.toFixed(4)}`,
-      `$${cli.meanCostUsd.toFixed(4)}`,
-      `${costRatio.toFixed(2)}x`,
+      ...variants.map((v) => `$${(summary[v] as AggregateStats).meanCostUsd.toFixed(4)}`),
     ],
     [
       "Turns",
-      mcp.meanNumTurns.toFixed(1),
-      cli.meanNumTurns.toFixed(1),
-      "",
+      ...variants.map((v) => (summary[v] as AggregateStats).meanNumTurns.toFixed(1)),
     ],
     [
       "Duration (s)",
-      (mcp.meanDurationMs / 1000).toFixed(1),
-      (cli.meanDurationMs / 1000).toFixed(1),
-      "",
+      ...variants.map((v) => ((summary[v] as AggregateStats).meanDurationMs / 1000).toFixed(1)),
     ],
   ];
 
-  const colWidths = rows[0]!.map((_, i) =>
+  const colWidths = headers.map((_, i) =>
     Math.max(...rows.map((r) => r[i]!.length)),
   );
   for (const [i, row] of rows.entries()) {
@@ -154,11 +159,23 @@ export function printSummary(report: ComparisonReport): void {
       console.log(colWidths.map((w) => "-".repeat(w)).join("  "));
   }
 
-  const winner = contextTokenRatio > 1 ? "CLI" : "MCP";
-  const ratio = contextTokenRatio > 1 ? contextTokenRatio : 1 / contextTokenRatio;
-  console.log(
-    `\n${winner} is ~${ratio.toFixed(1)}x more token-efficient (context tokens) on this task.\n`,
-  );
+  if (variants.includes("mcp") && variants.includes("cli")) {
+    const contextTokenRatio = report.summary.contextTokenRatio;
+    const winner = contextTokenRatio > 1 ? "CLI" : "MCP";
+    const ratio = contextTokenRatio > 1 ? contextTokenRatio : 1 / contextTokenRatio;
+    console.log(
+      `\n${winner} is ~${ratio.toFixed(1)}x more token-efficient (context tokens) on this task.\n`,
+    );
+  }
+
+  if (variants.includes("mcp-old") && variants.includes("mcp")) {
+    const oldCtx = (summary["mcp-old"] as AggregateStats).meanTotalContextTokens;
+    const newCtx = (summary.mcp as AggregateStats).meanTotalContextTokens;
+    const improvement = oldCtx / newCtx;
+    console.log(
+      `MCP improved ~${improvement.toFixed(1)}x from old SDK to new SDK (context tokens).\n`,
+    );
+  }
 }
 
 export async function saveReport(report: ComparisonReport): Promise<string> {

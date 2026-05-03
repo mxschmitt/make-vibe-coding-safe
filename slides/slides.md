@@ -294,7 +294,7 @@ layout: default
 layout: center
 ---
 
-# Why CLI, not MCP — same task, same agent
+# This video went viral for a reason
 
 <div class="grid grid-cols-2 gap-8 mt-6">
 
@@ -312,63 +312,23 @@ layout: center
 
 </div>
 
-<div class="mt-10 text-sm opacity-75 text-center">
+<div class="mt-8 text-sm opacity-75 text-center">
 Open playwright.dev · search "locators" · check 4 language docs · screenshot each.
 </div>
 
-<!--
-(11:00) Playwright team's own number. Same prompt. Same agent. ~4.25× cheaper with CLI. The why matters more than the number — next slide.
--->
-
----
-layout: default
----
-
-# The reason: who holds the state
-
-<div class="grid grid-cols-2 gap-10 mt-[6vh] text-base">
-
-<div>
-
-### MCP
-LLM asks server to navigate.<br/>
-**Server returns accessibility snapshot to the LLM.**
-
-LLM asks for a screenshot.<br/>
-**Server returns image bytes to the LLM.**
-
-Every intermediate byte hits context.
-
-</div>
-
-<div>
-
-### CLI
-Agent runs <code>playwright-cli goto …</code><br/>
-**CLI writes snapshot to a file.**
-
-Agent runs <code>playwright-cli screenshot …</code><br/>
-**CLI writes image to a file.**
-
-Coding agent decides what to read.
-
-</div>
-
-</div>
-
-<div class="mt-10 text-center text-lg opacity-90">
+<div class="mt-4 text-sm opacity-60 text-center">
 MCP routes state <em>through</em> the LLM. CLI routes state <em>around</em> it.
 </div>
 
 <!--
-(11:45) This is the whole argument. MCP's contract is "LLM orchestrates," so everything passes through the LLM. CLI's contract is "coding agent orchestrates," so state lives on disk and only the decisions hit context. Use MCP when the LLM *is* the agent. Use CLI when you already have a coding agent.
+(11:00) The Playwright team posted this comparison in mid-2025. Same prompt, same agent, same task. CLI used 4.25× fewer tokens. It went viral because it validated what everyone already felt — MCP servers blow up the context window. MCP's contract is "LLM orchestrates," so every accessibility snapshot and screenshot passes through context. CLI puts state on disk and the coding agent decides what to read. That was true. But that was 2025.
 -->
 
 ---
 layout: default
 ---
 
-# The MCP context problem got partially fixed
+# Then Anthropic fixed it
 
 <div class="mt-[8vh] space-y-3 text-sm">
 
@@ -379,22 +339,104 @@ layout: default
 
 <div class="flex gap-4 items-baseline">
 <div class="font-mono opacity-60 w-28">2025-10-16</div>
-<div>Anthropic <strong>Skills</strong>: three-level progressive disclosure (~100 tokens metadata, full body on invoke).</div>
+<div>Anthropic <strong>Skills</strong>: progressive disclosure — ~100 tokens metadata, full body on invoke.</div>
 </div>
 
 <div class="flex gap-4 items-baseline">
 <div class="font-mono opacity-60 w-28">2025-11-04</div>
-<div>Anthropic "Code execution with MCP": <strong>150k → 2k tokens</strong> by calling MCP from code, not schema-inlining.</div>
+<div>Anthropic "Code execution with MCP": <strong>150k → 2k tokens</strong> by calling MCP from code.</div>
 </div>
 
 </div>
 
 <div class="mt-10 p-4 bg-zinc-800/50 rounded text-center">
-Anthropic did most of the work. The MCP spec helped. Neither change is the default — you still have to opt in.
+Anthropic did most of the work. The SDK carries the fix — no opt-in needed today.
 </div>
 
 <!--
-(12:15) Worth calling out because you've probably heard "MCP blows up context." That was true. Between Oct and Nov 2025, it stopped being the inevitable default — if you know to reach for Skills or code-execution-over-MCP. But by default, naïve MCP use still inflates context, which is why the CLI number on the previous slide is so stark.
+(11:30) Three fixes in five months. The MCP spec added resource links so tools return a URI instead of a blob. Anthropic shipped Skills so tool definitions cost about 100 tokens instead of thousands. Then code-execution-over-MCP let the agent write code that calls MCP servers — only the output enters context. Key point: Anthropic did most of the heavy lifting, not the MCP spec. And these patterns are now the default in the Claude Agent SDK.
+-->
+
+---
+layout: default
+---
+
+# We re-ran the benchmark. MCP won.
+
+<div class="mt-[4vh]">
+<table class="w-full text-center">
+<thead>
+<tr class="text-sm opacity-60">
+  <th class="text-left py-2">Metric</th>
+  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Sep 2025 SDK</span></th>
+  <th class="py-2">MCP<br/><span class="text-xs opacity-50">May 2026 SDK</span></th>
+  <th class="py-2">CLI + skills<br/><span class="text-xs opacity-50">May 2026 SDK</span></th>
+</tr>
+</thead>
+<tbody class="text-lg">
+<tr>
+  <td class="text-left py-2">Context tokens</td>
+  <td class="py-2 text-red-400 font-bold">1,377k</td>
+  <td class="py-2 text-green-400 font-bold">524k</td>
+  <td class="py-2 text-yellow-400 font-bold">976k</td>
+</tr>
+<tr>
+  <td class="text-left py-2">Cost</td>
+  <td class="py-2">$0.80</td>
+  <td class="py-2">$0.36</td>
+  <td class="py-2">$0.44</td>
+</tr>
+<tr>
+  <td class="text-left py-2">Turns</td>
+  <td class="py-2">53</td>
+  <td class="py-2">18.7</td>
+  <td class="py-2">33.0</td>
+</tr>
+<tr>
+  <td class="text-left py-2">Duration</td>
+  <td class="py-2">129s</td>
+  <td class="py-2">73s</td>
+  <td class="py-2">113s</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="mt-6 text-sm opacity-60 text-center">
+Same task as the viral video. Claude Agent SDK, Sonnet, 3 runs each. This is a cost benchmark (eval), not a quality eval.
+</div>
+
+<!--
+(12:00) Same task as the Playwright team video. We ran it on the old Claude Code SDK from September 2025 — before Skills, before code-execution-with-MCP. MCP burned through 1.4M context tokens in 53 turns. Then we ran on the current SDK. MCP uses 524k context tokens in 19 turns. CLI uses 976k in 33 turns. MCP improved 2.6× from old to new SDK, and is now 1.9× cheaper than CLI. Total flip. Is this an eval? It's a cost benchmark — same prompt, same model, multiple runs, quantitative output. A full eval would also grade correctness. The code is on GitHub if you want to run it yourself.
+-->
+
+---
+layout: two-cols-header
+class: pt-[8vh]
+---
+
+# What I recommend in 2026
+
+::left::
+
+### Use MCP when
+- The LLM is the orchestrator
+- You want structured browser state (accessibility snapshots)
+- You are in an editor (Cursor, VS Code, Codex)
+
+::right::
+
+### Use CLI + skills when
+- You have a coding agent with filesystem access
+- You want the agent to choose what enters context
+- You are running headless in CI
+
+<div class="mt-10 text-center col-span-2 text-lg opacity-90">
+The token gap is closed. Pick based on your architecture, not on 2025 benchmarks.
+</div>
+
+<!--
+(12:30) Updated recommendation. In 2025 I would have said always CLI for coding agents. In 2026 the data says MCP is token-competitive and often cheaper because it finishes in fewer turns. Use MCP when the LLM is the orchestrator — editors, chat agents, agentic loops. Use CLI when you already have a coding agent with a filesystem. The point: stop picking based on token anxiety. Pick based on who orchestrates.
 -->
 
 ---
