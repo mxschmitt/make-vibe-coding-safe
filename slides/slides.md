@@ -31,7 +31,7 @@ layout: default
 
 # About me
 
-<div class="mt-[14vh] grid grid-cols-[auto_1fr_1fr] gap-10 items-start">
+<div class="mt-[8vh] grid grid-cols-[auto_1fr_1fr] gap-10 items-start">
 
 <div class="flex-shrink-0">
   <img
@@ -104,6 +104,7 @@ class: text-center
 
 ---
 layout: two-cols-header
+class: pt-[8vh]
 ---
 
 # Agents already do most of this
@@ -130,13 +131,13 @@ layout: two-cols-header
 -->
 
 ---
-layout: default
+layout: center
 ---
 
 # How we got here — five eras, 60 seconds
 
-<div class="mt-[20vh] relative">
-  <div class="absolute left-0 right-0 top-4 h-0.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500"></div>
+<div class="mt-8 relative">
+  <div class="absolute left-0 right-0 top-2 h-0.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500"></div>
   <div class="grid grid-cols-5 gap-4 relative">
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-indigo-500/20"></div>
@@ -230,7 +231,7 @@ layout: default
 
 # Browser tools for coding agents · 2026
 
-<div class="mt-8 text-sm">
+<div class="mt-[6vh] text-sm">
 
 | Tool | Best for | GitHub stars |
 | --- | --- | ---: |
@@ -277,7 +278,7 @@ layout: default
 -->
 
 ---
-layout: default
+layout: center
 ---
 
 # Why CLI, not MCP — same task, same agent
@@ -312,7 +313,7 @@ layout: default
 
 # The reason: who holds the state
 
-<div class="grid grid-cols-2 gap-10 mt-8 text-base">
+<div class="grid grid-cols-2 gap-10 mt-[6vh] text-base">
 
 <div>
 
@@ -356,7 +357,7 @@ layout: default
 
 # The MCP context problem got partially fixed
 
-<div class="mt-6 space-y-3 text-sm">
+<div class="mt-[8vh] space-y-3 text-sm">
 
 <div class="flex gap-4 items-baseline">
 <div class="font-mono opacity-60 w-28">2025-06-18</div>
@@ -389,7 +390,7 @@ layout: default
 
 # Keep the suite small. Keep it green.
 
-<div class="mt-10 space-y-6 text-lg max-w-2xl mx-auto">
+<div class="mt-[6vh] space-y-6 text-lg max-w-2xl mx-auto">
 
 <div>✔ One spec per critical journey. Three, not thirty.</div>
 <div>✔ Run on every commit. Trace on failure.</div>
