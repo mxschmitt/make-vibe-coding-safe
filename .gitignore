@@ -6,4 +6,3 @@ dist/
 playwright-report/
 test-results/
 .slidev/
-benchmark/results/
