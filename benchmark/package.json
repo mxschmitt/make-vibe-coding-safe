@@ -2,6 +2,7 @@
   "name": "benchmark",
   "private": true,
   "type": "module",
+  "//": "claude-agent-sdk-old is pinned to 0.0.4 to benchmark old MCP-based token usage vs the current SDK version",
   "scripts": {
     "benchmark": "tsx src/run-benchmark.ts",
     "benchmark:mcp": "tsx src/run-benchmark.ts --variant mcp",

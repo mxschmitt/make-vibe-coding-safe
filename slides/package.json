@@ -11,7 +11,7 @@
     "play": "slidev"
   },
   "devDependencies": {
-    "@slidev/cli": "^52.14.2",
+    "@slidev/cli": "^52.15.0",
     "@slidev/theme-default": "^0.25.0"
   }
 }
