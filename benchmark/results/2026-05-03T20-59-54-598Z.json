@@ -1,0 +1,1540 @@
+{
+  "timestamp": "2026-05-03T20:59:54.598Z",
+  "taskPrompt": "Open playwright.dev, search for \"locators\" and check that the doc is available for each language. Take screenshots of each of the language docs.",
+  "model": "sonnet",
+  "runs": [
+    {
+      "variant": "mcp",
+      "runIndex": 0,
+      "success": true,
+      "durationMs": 72330,
+      "durationApiMs": 58832,
+      "numTurns": 17,
+      "totalCostUsd": 0.3514108000000001,
+      "inputTokens": 325,
+      "outputTokens": 2068,
+      "cacheReadInputTokens": 386931,
+      "cacheCreationInputTokens": 54414,
+      "totalTokens": 2393,
+      "totalContextTokens": 443738,
+      "model": "sonnet",
+      "steps": [
+        {
+          "index": 0,
+          "inputTokens": 10,
+          "outputTokens": 6
+        },
+        {
+          "index": 1,
+          "inputTokens": 10,
+          "outputTokens": 6
+        },
+        {
+          "index": 2,
+          "toolName": "ToolSearch",
+          "inputTokens": 10,
+          "outputTokens": 6
+        },
+        {
+          "index": 3,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 4,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 5,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 6,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 5,
+          "outputTokens": 27
+        },
+        {
+          "index": 7,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 8,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 9,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 4,
+          "outputTokens": 27
+        },
+        {
+          "index": 10,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 11,
+          "toolName": "mcp__playwright__browser_type",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 12,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 13,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 14,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 15,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 16,
+          "inputTokens": 4,
+          "outputTokens": 3
+        },
+        {
+          "index": 17,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 3
+        },
+        {
+          "index": 18,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 19,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 20,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 21,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 22,
+          "inputTokens": 4,
+          "outputTokens": 5
+        },
+        {
+          "index": 23,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 5
+        },
+        {
+          "index": 24,
+          "inputTokens": 10,
+          "outputTokens": 2
+        },
+        {
+          "index": 25,
+          "inputTokens": 10,
+          "outputTokens": 2
+        },
+        {
+          "index": 26,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 10,
+          "outputTokens": 2
+        },
+        {
+          "index": 27,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 32
+        },
+        {
+          "index": 28,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 29,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 30,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 32
+        },
+        {
+          "index": 31,
+          "inputTokens": 5,
+          "outputTokens": 3
+        }
+      ]
+    },
+    {
+      "variant": "mcp",
+      "runIndex": 1,
+      "success": true,
+      "durationMs": 81926,
+      "durationApiMs": 71128,
+      "numTurns": 21,
+      "totalCostUsd": 0.53031135,
+      "inputTokens": 362,
+      "outputTokens": 2541,
+      "cacheReadInputTokens": 557667,
+      "cacheCreationInputTokens": 86543,
+      "totalTokens": 2903,
+      "totalContextTokens": 647113,
+      "model": "sonnet",
+      "steps": [
+        {
+          "index": 0,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 1,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 2,
+          "toolName": "ToolSearch",
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 3,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 4,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 5,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 5,
+          "outputTokens": 32
+        },
+        {
+          "index": 6,
+          "inputTokens": 8,
+          "outputTokens": 1
+        },
+        {
+          "index": 7,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 8,
+          "outputTokens": 1
+        },
+        {
+          "index": 8,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 6,
+          "outputTokens": 32
+        },
+        {
+          "index": 9,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 5,
+          "outputTokens": 32
+        },
+        {
+          "index": 10,
+          "inputTokens": 6,
+          "outputTokens": 1
+        },
+        {
+          "index": 11,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 6,
+          "outputTokens": 1
+        },
+        {
+          "index": 12,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 13,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 14,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 15,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 16,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 6,
+          "outputTokens": 25
+        },
+        {
+          "index": 17,
+          "toolName": "ToolSearch",
+          "inputTokens": 6,
+          "outputTokens": 27
+        },
+        {
+          "index": 18,
+          "inputTokens": 10,
+          "outputTokens": 2
+        },
+        {
+          "index": 19,
+          "toolName": "mcp__playwright__browser_press_key",
+          "inputTokens": 10,
+          "outputTokens": 2
+        },
+        {
+          "index": 20,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 21,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 22,
+          "inputTokens": 6,
+          "outputTokens": 1
+        },
+        {
+          "index": 23,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 6,
+          "outputTokens": 1
+        },
+        {
+          "index": 24,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 25,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 26,
+          "inputTokens": 4,
+          "outputTokens": 6
+        },
+        {
+          "index": 27,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 6
+        },
+        {
+          "index": 28,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 29,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 30,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 33
+        },
+        {
+          "index": 31,
+          "inputTokens": 5,
+          "outputTokens": 8
+        },
+        {
+          "index": 32,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 5,
+          "outputTokens": 8
+        },
+        {
+          "index": 33,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 32
+        },
+        {
+          "index": 34,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 35,
+          "inputTokens": 10,
+          "outputTokens": 1
+        }
+      ]
+    },
+    {
+      "variant": "mcp",
+      "runIndex": 2,
+      "success": true,
+      "durationMs": 65486,
+      "durationApiMs": 55152,
+      "numTurns": 15,
+      "totalCostUsd": 0.22819335,
+      "inputTokens": 317,
+      "outputTokens": 1802,
+      "cacheReadInputTokens": 300807,
+      "cacheCreationInputTokens": 29519,
+      "totalTokens": 2119,
+      "totalContextTokens": 332445,
+      "model": "sonnet",
+      "steps": [
+        {
+          "index": 0,
+          "inputTokens": 10,
+          "outputTokens": 8
+        },
+        {
+          "index": 1,
+          "inputTokens": 10,
+          "outputTokens": 8
+        },
+        {
+          "index": 2,
+          "toolName": "ToolSearch",
+          "inputTokens": 10,
+          "outputTokens": 8
+        },
+        {
+          "index": 3,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 4,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 5,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 6,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 5,
+          "outputTokens": 27
+        },
+        {
+          "index": 7,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 8,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 9,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 4,
+          "outputTokens": 27
+        },
+        {
+          "index": 10,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 11,
+          "toolName": "mcp__playwright__browser_click",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 12,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 13,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 14,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 15,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 16,
+          "toolName": "mcp__playwright__browser_snapshot",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 17,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 18,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 19,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 33
+        },
+        {
+          "index": 20,
+          "inputTokens": 5,
+          "outputTokens": 2
+        },
+        {
+          "index": 21,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 5,
+          "outputTokens": 2
+        },
+        {
+          "index": 22,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 32
+        },
+        {
+          "index": 23,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 24,
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 25,
+          "toolName": "mcp__playwright__browser_navigate",
+          "inputTokens": 10,
+          "outputTokens": 1
+        },
+        {
+          "index": 26,
+          "toolName": "mcp__playwright__browser_take_screenshot",
+          "inputTokens": 4,
+          "outputTokens": 32
+        },
+        {
+          "index": 27,
+          "inputTokens": 5,
+          "outputTokens": 1
+        }
+      ]
+    },
+    {
+      "variant": "cli",
+      "runIndex": 0,
+      "success": true,
+      "durationMs": 125895,
+      "durationApiMs": 105751,
+      "numTurns": 37,
+      "totalCostUsd": 0.5462746500000001,
+      "inputTokens": 263,
+      "outputTokens": 4058,
+      "cacheReadInputTokens": 1102693,
+      "cacheCreationInputTokens": 41209,
+      "totalTokens": 4321,
+      "totalContextTokens": 1148223,
+      "model": "sonnet",
+      "steps": [
+        {
+          "index": 0,
+          "inputTokens": 10,
+          "outputTokens": 8
+        },
+        {
+          "index": 1,
+          "inputTokens": 10,
+          "outputTokens": 8
+        },
+        {
+          "index": 2,
+          "toolName": "Bash",
+          "inputTokens": 10,
+          "outputTokens": 8
+        },
+        {
+          "index": 3,
+          "toolName": "Bash",
+          "inputTokens": 5,
+          "outputTokens": 24
+        },
+        {
+          "index": 4,
+          "toolName": "Bash",
+          "inputTokens": 4,
+          "outputTokens": 24
+        },
+        {
+          "index": 5,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 6,
+          "toolName": "Bash",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 7,
+          "toolName": "Read",
+          "inputTokens": 3,
+          "outputTokens": 25
+        },
+        {
+          "index": 8,
+          "inputTokens": 3,
+          "outputTokens": 1
+        },
+        {
+          "index": 9,
+          "toolName": "Bash",
+          "inputTokens": 3,
+          "outputTokens": 1
+        },
+        {
+          "index": 10,
+          "toolName": "Read",
+          "inputTokens": 2,
+          "outputTokens": 18
+        },
+        {
+          "index": 11,
+          "inputTokens": 1,
+          "outputTokens": 1
+        },
+        {
+          "index": 12,
+          "toolName": "Bash",
+          "inputTokens": 1,
+          "outputTokens": 1
+        },
+        {
+          "index": 13,
+          "inputTokens": 2,
+          "outputTokens": 3
+        },
+        {
+          "index": 14,
+          "toolName": "Bash",
+          "inputTokens": 2,
+          "outputTokens": 3
+        },
+        {
+          "index": 15,
+          "toolName": "Bash",
+          "inputTokens": 1,
+          "outputTokens": 25
+        },
+        {
+          "index": 16,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 18
+        },
+        {
+          "index": 17,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 18,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 19,
+          "inputTokens": 0,
+          "outputTokens": 6
+        },
+        {
+          "index": 20,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 6
+        },
+        {
+          "index": 21,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 22,
+          "inputTokens": 0,
+          "outputTokens": 6
+        },
+        {
+          "index": 23,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 6
+        },
+        {
+          "index": 24,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 25,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 26,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 27,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 28,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 29,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 30,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 31,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 32,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 33,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 34,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 35,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 36,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 37,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 38,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 39,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 40,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 41,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 42,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 43,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 44,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 45,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 46,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 47,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 48,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 49,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 50,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 51,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 52,
+          "inputTokens": 0,
+          "outputTokens": 4
+        },
+        {
+          "index": 53,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 4
+        },
+        {
+          "index": 54,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 55,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 56,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 57,
+          "inputTokens": 0,
+          "outputTokens": 4
+        }
+      ]
+    },
+    {
+      "variant": "cli",
+      "runIndex": 1,
+      "success": true,
+      "durationMs": 103168,
+      "durationApiMs": 89491,
+      "numTurns": 30,
+      "totalCostUsd": 0.38728830000000003,
+      "inputTokens": 265,
+      "outputTokens": 3338,
+      "cacheReadInputTokens": 861006,
+      "cacheCreationInputTokens": 21026,
+      "totalTokens": 3603,
+      "totalContextTokens": 885635,
+      "model": "sonnet",
+      "steps": [
+        {
+          "index": 0,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 1,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 2,
+          "toolName": "Bash",
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 3,
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 4,
+          "toolName": "Bash",
+          "inputTokens": 5,
+          "outputTokens": 1
+        },
+        {
+          "index": 5,
+          "toolName": "Read",
+          "inputTokens": 4,
+          "outputTokens": 18
+        },
+        {
+          "index": 6,
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 7,
+          "toolName": "Bash",
+          "inputTokens": 4,
+          "outputTokens": 1
+        },
+        {
+          "index": 8,
+          "toolName": "Bash",
+          "inputTokens": 3,
+          "outputTokens": 25
+        },
+        {
+          "index": 9,
+          "toolName": "Read",
+          "inputTokens": 2,
+          "outputTokens": 18
+        },
+        {
+          "index": 10,
+          "inputTokens": 2,
+          "outputTokens": 1
+        },
+        {
+          "index": 11,
+          "toolName": "Bash",
+          "inputTokens": 2,
+          "outputTokens": 1
+        },
+        {
+          "index": 12,
+          "inputTokens": 3,
+          "outputTokens": 1
+        },
+        {
+          "index": 13,
+          "toolName": "Bash",
+          "inputTokens": 3,
+          "outputTokens": 1
+        },
+        {
+          "index": 14,
+          "toolName": "Bash",
+          "inputTokens": 2,
+          "outputTokens": 25
+        },
+        {
+          "index": 15,
+          "toolName": "Read",
+          "inputTokens": 1,
+          "outputTokens": 25
+        },
+        {
+          "index": 16,
+          "inputTokens": 1,
+          "outputTokens": 1
+        },
+        {
+          "index": 17,
+          "toolName": "Bash",
+          "inputTokens": 1,
+          "outputTokens": 1
+        },
+        {
+          "index": 18,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 19,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 20,
+          "inputTokens": 0,
+          "outputTokens": 3
+        },
+        {
+          "index": 21,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 3
+        },
+        {
+          "index": 22,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 23,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 24,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 25,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 26,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 27,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 28,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 29,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 30,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 31,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 32,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 33,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 34,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 35,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 36,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 37,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 38,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 39,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 40,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 41,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 42,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 43,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 44,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 45,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 46,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 47,
+          "inputTokens": 0,
+          "outputTokens": 1
+        }
+      ]
+    },
+    {
+      "variant": "cli",
+      "runIndex": 2,
+      "success": true,
+      "durationMs": 103761,
+      "durationApiMs": 88958,
+      "numTurns": 34,
+      "totalCostUsd": 0.39607700000000007,
+      "inputTokens": 259,
+      "outputTokens": 3335,
+      "cacheReadInputTokens": 911645,
+      "cacheCreationInputTokens": 19330,
+      "totalTokens": 3594,
+      "totalContextTokens": 934569,
+      "model": "sonnet",
+      "steps": [
+        {
+          "index": 0,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 1,
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 2,
+          "toolName": "Bash",
+          "inputTokens": 10,
+          "outputTokens": 3
+        },
+        {
+          "index": 3,
+          "toolName": "Bash",
+          "inputTokens": 5,
+          "outputTokens": 24
+        },
+        {
+          "index": 4,
+          "toolName": "Read",
+          "inputTokens": 4,
+          "outputTokens": 25
+        },
+        {
+          "index": 5,
+          "toolName": "Bash",
+          "inputTokens": 4,
+          "outputTokens": 26
+        },
+        {
+          "index": 6,
+          "toolName": "Bash",
+          "inputTokens": 3,
+          "outputTokens": 24
+        },
+        {
+          "index": 7,
+          "toolName": "Read",
+          "inputTokens": 2,
+          "outputTokens": 18
+        },
+        {
+          "index": 8,
+          "inputTokens": 2,
+          "outputTokens": 1
+        },
+        {
+          "index": 9,
+          "toolName": "Bash",
+          "inputTokens": 2,
+          "outputTokens": 1
+        },
+        {
+          "index": 10,
+          "toolName": "Bash",
+          "inputTokens": 1,
+          "outputTokens": 24
+        },
+        {
+          "index": 11,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 12,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 13,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 14,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 15,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 16,
+          "inputTokens": 0,
+          "outputTokens": 2
+        },
+        {
+          "index": 17,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 2
+        },
+        {
+          "index": 18,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 19,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 20,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 21,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 22,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 23,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 24,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 25,
+          "inputTokens": 0,
+          "outputTokens": 2
+        },
+        {
+          "index": 26,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 2
+        },
+        {
+          "index": 27,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 28,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 29,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 30,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 31,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 32,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 33,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 25
+        },
+        {
+          "index": 34,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 35,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 36,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 37,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 38,
+          "toolName": "Read",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 39,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 40,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 41,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 42,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 24
+        },
+        {
+          "index": 43,
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 44,
+          "toolName": "Bash",
+          "inputTokens": 0,
+          "outputTokens": 1
+        },
+        {
+          "index": 45,
+          "inputTokens": 0,
+          "outputTokens": 4
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "mcp": {
+      "variant": "mcp",
+      "count": 3,
+      "meanTotalTokens": 2472,
+      "medianTotalTokens": 2393,
+      "minTotalTokens": 2119,
+      "maxTotalTokens": 2903,
+      "meanInputTokens": 335,
+      "meanOutputTokens": 2137,
+      "meanCacheReadTokens": 415135,
+      "meanCacheWriteTokens": 56825,
+      "meanTotalContextTokens": 474432,
+      "meanCostUsd": 0.36997183333333333,
+      "meanDurationMs": 73247,
+      "meanNumTurns": 17.666666666666668
+    },
+    "cli": {
+      "variant": "cli",
+      "count": 3,
+      "meanTotalTokens": 3839,
+      "medianTotalTokens": 3603,
+      "minTotalTokens": 3594,
+      "maxTotalTokens": 4321,
+      "meanInputTokens": 262,
+      "meanOutputTokens": 3577,
+      "meanCacheReadTokens": 958448,
+      "meanCacheWriteTokens": 27188,
+      "meanTotalContextTokens": 989476,
+      "meanCostUsd": 0.44321331666666675,
+      "meanDurationMs": 110941,
+      "meanNumTurns": 33.666666666666664
+    },
+    "tokenRatio": 0.6439176868976296,
+    "contextTokenRatio": 0.4794780267535544,
+    "costRatio": 0.8347489107859611
+  }
+}
