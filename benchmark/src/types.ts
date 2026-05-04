@@ -1,4 +1,4 @@
-export type Variant = "mcp" | "cli";
+export type Variant = "mcp" | "mcp-old" | "cli";
 
 export interface RunConfig {
   variant: Variant;
@@ -58,6 +58,7 @@ export interface ComparisonReport {
   model: string;
   runs: RunResult[];
   summary: {
+    "mcp-old"?: AggregateStats;
     mcp: AggregateStats;
     cli: AggregateStats;
     tokenRatio: number;

@@ -25,11 +25,14 @@ function parseCliArgs(): { variants: Variant[]; runs: number; model: string } {
     case "mcp":
       variants = ["mcp"];
       break;
+    case "mcp-old":
+      variants = ["mcp-old"];
+      break;
     case "cli":
       variants = ["cli"];
       break;
     default:
-      variants = ["mcp", "cli"];
+      variants = ["mcp-old", "mcp", "cli"];
   }
 
   return {
@@ -91,7 +94,7 @@ async function main(): Promise<void> {
     }
   }
 
-  if (args.variants.length === 2 && results.length > 0) {
+  if (args.variants.length >= 2 && results.length > 0) {
     const report = buildReport(results, TASK_PROMPT, args.model);
     printSummary(report);
     await saveReport(report);

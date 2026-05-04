@@ -1,22 +1,25 @@
-import { query, type SDKAssistantMessage, type Options } from "@anthropic-ai/claude-agent-sdk";
 import type { RunConfig, RunResult, StepRecord } from "./types.js";
 
-function buildOptions(config: RunConfig): Options {
-  const base: Options = {
+function buildOptions(config: RunConfig) {
+  const isOld = config.variant === "mcp-old";
+
+  const base: Record<string, unknown> = {
     cwd: config.cwd,
     model: config.model,
     maxTurns: config.maxTurns,
     permissionMode: "bypassPermissions",
-    allowDangerouslySkipPermissions: true,
-    persistSession: false,
-    settingSources: [],
+    ...(!isOld && {
+      allowDangerouslySkipPermissions: true,
+      persistSession: false,
+      settingSources: [],
+    }),
     systemPrompt: {
       type: "preset",
       preset: "claude_code",
     },
   };
 
-  if (config.variant === "mcp") {
+  if (config.variant === "mcp" || config.variant === "mcp-old") {
     return {
       ...base,
       mcpServers: {
@@ -64,9 +67,14 @@ export async function runSingle(config: RunConfig): Promise<RunResult> {
   const t0 = Date.now();
   const elapsed = () => `${((Date.now() - t0) / 1000).toFixed(1)}s`;
 
+  const sdk =
+    config.variant === "mcp-old"
+      ? await import("claude-agent-sdk-old")
+      : await import("@anthropic-ai/claude-agent-sdk");
+
   const options = buildOptions(config);
   console.log(`    [${elapsed()}] Starting query (${config.variant})...`);
-  const stream = query({ prompt: config.taskPrompt, options });
+  const stream = sdk.query({ prompt: config.taskPrompt, options });
 
   for await (const message of stream) {
     if (message.type === "system" && "tools" in message) {
@@ -77,19 +85,18 @@ export async function runSingle(config: RunConfig): Promise<RunResult> {
     }
 
     if (message.type === "assistant") {
-      const assistant = message as SDKAssistantMessage;
+      const assistant = message as { message: { usage?: { input_tokens?: number; output_tokens?: number }; content: Array<{ type: string; name?: string; text?: string }> } };
       const usage = assistant.message.usage;
       const toolBlock = assistant.message.content.find(
-        (b: { type: string }) => b.type === "tool_use",
+        (b) => b.type === "tool_use",
       );
       const textBlock = assistant.message.content.find(
-        (b: { type: string }) => b.type === "text",
+        (b) => b.type === "text",
       );
-      const toolName =
-        toolBlock?.type === "tool_use" ? toolBlock.name : undefined;
+      const toolName = toolBlock?.type === "tool_use" ? toolBlock.name : undefined;
       const textPreview =
         textBlock?.type === "text"
-          ? textBlock.text.slice(0, 80).replace(/\n/g, " ")
+          ? textBlock.text!.slice(0, 80).replace(/\n/g, " ")
           : "";
 
       steps.push({
@@ -115,7 +122,7 @@ export async function runSingle(config: RunConfig): Promise<RunResult> {
     }
 
     if (message.type === "result") {
-      const mu = message.modelUsage;
+      const mu = (message as { modelUsage: Record<string, { inputTokens: number; outputTokens: number; cacheReadInputTokens: number; cacheCreationInputTokens: number }> }).modelUsage;
       let inputTokens = 0;
       let outputTokens = 0;
       let cacheReadInputTokens = 0;
@@ -126,16 +133,17 @@ export async function runSingle(config: RunConfig): Promise<RunResult> {
         cacheReadInputTokens += m.cacheReadInputTokens;
         cacheCreationInputTokens += m.cacheCreationInputTokens;
       }
+      const result = message as { subtype: string; duration_ms: number; duration_api_ms: number; num_turns: number; total_cost_usd: number };
       return {
         variant: config.variant,
         runIndex: config.runIndex,
-        success: message.subtype === "success",
+        success: result.subtype === "success",
         errorSubtype:
-          message.subtype !== "success" ? message.subtype : undefined,
-        durationMs: message.duration_ms,
-        durationApiMs: message.duration_api_ms,
-        numTurns: message.num_turns,
-        totalCostUsd: message.total_cost_usd,
+          result.subtype !== "success" ? result.subtype : undefined,
+        durationMs: result.duration_ms,
+        durationApiMs: result.duration_api_ms,
+        numTurns: result.num_turns,
+        totalCostUsd: result.total_cost_usd,
         inputTokens,
         outputTokens,
         cacheReadInputTokens,

@@ -5,10 +5,12 @@
   "scripts": {
     "benchmark": "tsx src/run-benchmark.ts",
     "benchmark:mcp": "tsx src/run-benchmark.ts --variant mcp",
+    "benchmark:mcp-old": "tsx src/run-benchmark.ts --variant mcp-old",
     "benchmark:cli": "tsx src/run-benchmark.ts --variant cli"
   },
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.2"
+    "@anthropic-ai/claude-agent-sdk": "^0.2.126",
+    "claude-agent-sdk-old": "npm:@anthropic-ai/claude-agent-sdk@0.0.4"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
