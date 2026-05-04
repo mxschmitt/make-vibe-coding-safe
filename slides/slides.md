@@ -493,26 +493,6 @@ layout: default
 -->
 
 ---
-layout: default
----
-
-# Making this talk with AI
-
-<div class="mt-[6vh] space-y-6 text-lg max-w-2xl mx-auto">
-
-<div>✔ <strong>Slides as code</strong> — <a href="https://sli.dev" class="underline decoration-dotted">Slidev</a> is agent-editable, diffable, and testable.</div>
-<div>✔ <strong>Deep Research for resources</strong> — curated context the coding agent can reflect on.</div>
-<div>✔ <strong>Parallel agents</strong> — <a href="https://conductor.build" class="underline decoration-dotted">Conductor</a> lets you work on multiple things at once.</div>
-<div>✔ <strong>Version control</strong> — git history, diffs, and PRs for every slide change.</div>
-<div>✔ <strong>Close to code</strong> — slides live next to the app and tests they describe.</div>
-
-</div>
-
-<!--
-(13:30) Quick meta-note: this talk was built with the same tools I've been demoing. Slidev for slides-as-code, Deep Research for the resource section, Conductor to run agents in parallel, and git for every change. Keeping it all close to the code made the whole loop tighter.
--->
-
----
 layout: center
 class: text-center
 ---

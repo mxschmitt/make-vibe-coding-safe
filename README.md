@@ -71,6 +71,14 @@ Key finding from the Playwright team's own comparison: **26.8k tokens** (CLI) vs
 - **Tests**: Playwright tests run on every push and PR to `main` ([ci.yml](.github/workflows/ci.yml))
 - **Slides**: Built and deployed to [GitHub Pages](https://mxschmitt.github.io/aicouncil-talk-e2e-testing-with-ai/) on push to `main` ([deploy-pages.yml](.github/workflows/deploy-pages.yml))
 
+## Learnings — making this talk with AI
+
+- **Slides as code** — [Slidev](https://sli.dev) is agent-editable, diffable, and testable
+- **Deep Research for resources** — curated context the coding agent can reflect on
+- **Parallel agents** — [Conductor](https://conductor.build) lets you work on multiple things at once
+- **Version control** — git history, diffs, and PRs for every slide change
+- **Close to code** — slides live next to the app and tests they describe
+
 ## License
 
 This repository contains talk preparation materials. The demo app and benchmark code are provided as-is for educational purposes.
