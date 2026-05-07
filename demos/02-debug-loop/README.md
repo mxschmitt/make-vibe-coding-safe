@@ -27,6 +27,10 @@ git checkout demo/broken-konami -- src/components/konami-listener.tsx
 npx playwright test konami-egg
 ```
 
+// this demo is contrived. it assumes the agent does not have access to the diff? if it had access to the diff, it'd never ever, ever, ever bother looking at the trace. at least not for this particular diff.
+// maybe it's okay that it's contrived though. it's hard to find a reason why npx playwright trace helps, unless there's a QA/eng split in the org. without the split, failures should be so apparent from error message and diff that you don't need to look at the trace.
+// flakiness and races, that's where trace helps!
+
 ## Prompt
 
 Paste into Claude Code, Gemini CLI, or any terminal agent:
@@ -52,11 +56,13 @@ Before 1.59, agents had to guess from error output and re-run tests blind. Now t
 
 | | Pre-1.59 | Post-1.59 (`npx playwright trace`) |
 |---|---|---|
-| Agent's first move | Re-read source, guess from error message | `npx playwright trace` — see actual browser actions |
+| Agent's first move | Re-read source, guess from error message | `npx playwright trace` — see actual browser actions | // haha, this is what I meant. why would you have to see actual browser actions if you could read test + impl source?
 | Typical iterations | 5-10 re-runs with console.log | 3-4 targeted commands |
 | Tokens consumed | 10k-30k | 5k-13k |
 | Evidence left behind | None (guesswork in chat log) | Trace file on disk |
 | Risk of wrong fix | High — agent may "fix" the test instead | Low — agent sees the real sequence mismatch |
+
+// taking back what I said above: trace *is* useful if there's an external system involved that can only be examined at runtime, something like an external API. maybe you should form your demo around that.
 
 ## Cleanup
 

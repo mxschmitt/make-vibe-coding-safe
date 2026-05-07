@@ -178,7 +178,7 @@ layout: center
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-500 ring-4 ring-fuchsia-500/20"></div>
       <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2026</div>
-      <div class="mt-2 text-sm font-medium">Agents can see the browser</div>
+      <div class="mt-2 text-sm font-medium">Coding agents can see the browser</div>
       <div class="mt-1 text-xs opacity-70">Playwright CLI · Chrome DevTools MCP · agent-browser</div>
     </div>
   </div>
@@ -260,7 +260,7 @@ class: text-center
   <div class="text-lg font-medium mt-3">The agent read the real failure — not a stack trace.</div>
   <div class="mt-4 text-sm opacity-80">
     <code>npx playwright trace</code> — new in 1.59.<br/>
-    The Playwright team got us covered.
+    The Playwright team got us covered. // this sounds a little too heroic for my taste, especially since you're so close to the Playwright team. I'd rephrase.
   </div>
 </div>
 
@@ -347,7 +347,7 @@ layout: center
     <div class="text-5xl font-bold text-green-400">26.8k <span class="text-lg font-normal opacity-75">tokens</span></div>
   </div>
   <div class="text-sm opacity-60">
-    MCP routes state <em>through</em> the LLM. CLI routes state <em>around</em> it.
+    MCP routes context <em>through</em> the LLM. CLI routes context <em>around</em> it.
   </div>
 </div>
 
@@ -483,7 +483,7 @@ layout: default
 <div>✔ One spec per critical journey. Three, not thirty.</div>
 <div>✔ Run on every commit. Trace on failure.</div>
 <div>✔ Treat flake as a bug — <a href="https://flakiness.io/" class="underline decoration-dotted">flakiness.io</a> for CI health.</div>
-<div>✔ Screenshots, traces, videos = reviewable receipts.</div>
+<div>✔ Screenshots, traces, videos = reviewable receipts.</div> // tell them about video-start, start-chapter etc! playwright cli and mcp can both record wonderful walkthrough videos that explain what it did, show a feature etc.
 <div>✔ The agent doesn't own the test suite. You do.</div>
 
 </div>
@@ -497,7 +497,7 @@ layout: center
 class: text-center
 ---
 
-# Tests are the durable artifact.
+# Tests are the durable artifact. // not sure what a "durable artifact" is supposed to mean. it suppose that it suggests the implementation is throwaway and can be regenerated at any point in time? If so, then does it mean that our tests are the new spec? I don't see it. This is a bold claim that's very handwavy. Probably exactly what you want on the last slide ^^
 
 <div class="mt-8 text-2xl opacity-75">
 Agents are how you get there.<br/>
