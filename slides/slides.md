@@ -72,15 +72,20 @@ Previously, 5 years as a core contributor to <strong>Microsoft Playwright</stron
 
 </div>
 
-<div class="text-sm">
+<div class="text-sm text-center">
 
 <div class="text-xs uppercase tracking-wider opacity-50 mb-3">Open source I've worked on</div>
+
+<img src="/playwright-logo.svg" alt="Playwright" class="mt-2 mb-3 inline-block" style="height: 48px;" />
 
 <div class="space-y-2">
   <div><strong>Playwright</strong> — 87.6k★</div>
   <div><strong>playwright-python</strong> — 14.6k★</div>
   <div><strong>playwright-go</strong> — 3.3k★</div>
   <div><strong>playwright-dotnet</strong> — 2.9k★</div>
+</div>
+
+<div class="mt-4">
   <div><strong>action-tmate</strong> — 3.5k★</div>
 </div>
 
@@ -401,9 +406,9 @@ layout: default
 <thead>
 <tr class="text-sm opacity-60">
   <th class="text-left py-2">Metric</th>
-  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Sep 2025 SDK</span></th>
-  <th class="py-2">MCP<br/><span class="text-xs opacity-50">May 2026 SDK</span></th>
-  <th class="py-2">CLI + skills<br/><span class="text-xs opacity-50">May 2026 SDK</span></th>
+  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Claude Code SDK · Sep 2025</span></th>
+  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Claude Code SDK · May 2026</span></th>
+  <th class="py-2">CLI + skills<br/><span class="text-xs opacity-50">Claude Code SDK · May 2026</span></th>
 </tr>
 </thead>
 <tbody class="text-lg">
@@ -436,40 +441,15 @@ layout: default
 </div>
 
 <div class="mt-6 text-sm opacity-60 text-center">
-Same task as the viral video. Claude Agent SDK, Sonnet, 3 runs each. This is a cost benchmark (eval), not a quality eval.
+Same task as the viral video. Claude Code SDK (Sept 2025 vs May 2026), Sonnet, 3 runs each. This is a cost benchmark (eval), not a quality eval.
 </div>
 
-<!--
-(12:00) Same task as the Playwright team video. We ran it on the old Claude Code SDK from September 2025 — before Skills, before code-execution-with-MCP. Old MCP cost $0.80 per run and needed 53 turns. Current MCP costs $0.36 in 19 turns. CLI costs $0.44 in 33 turns. MCP went from most expensive to cheapest — 2.2× cheaper than it was, and now 18% cheaper than CLI. Why cost and not raw tokens? Because cached tokens cost ~10× less than fresh ones, and MCP's improvement comes partly from better caching. Cost accounts for that; raw token counts don't. Is this an eval? It's a cost benchmark — same prompt, same model, multiple runs, quantitative output. A full eval would also grade correctness. The code is on GitHub.
--->
-
----
-layout: two-cols-header
-class: pt-[8vh]
----
-
-# What I recommend in 2026
-
-::left::
-
-### Use MCP when
-- The LLM is the orchestrator
-- You want structured browser state (accessibility snapshots)
-- You are in an editor (Cursor, VS Code, Codex)
-
-::right::
-
-### Use CLI + skills when
-- You have a coding agent with filesystem access
-- You want the agent to choose what enters context
-- You are running headless in CI
-
-<div class="mt-10 text-center col-span-2 text-lg opacity-90">
+<div class="mt-4 text-center text-base opacity-90">
 The token gap is closed. Pick based on your architecture, not on 2025 benchmarks.
 </div>
 
 <!--
-(12:30) Updated recommendation. In 2025 I would have said always CLI for coding agents. In 2026 the data says MCP is token-competitive and often cheaper because it finishes in fewer turns. Use MCP when the LLM is the orchestrator — editors, chat agents, agentic loops. Use CLI when you already have a coding agent with a filesystem. The point: stop picking based on token anxiety. Pick based on who orchestrates.
+(12:00) Same task as the Playwright team video. We ran it on the old Claude Code SDK from September 2025 — before Skills, before code-execution-with-MCP — then again on the May 2026 SDK that ships with all those fixes baked in. Old MCP cost $0.80 per run and needed 53 turns. Current MCP costs $0.36 in 19 turns. CLI costs $0.44 in 33 turns. MCP went from most expensive to cheapest — 2.2× cheaper than it was, and now 18% cheaper than CLI. Why cost and not raw tokens? Because cached tokens cost ~10× less than fresh ones, and MCP's improvement comes partly from better caching. Cost accounts for that; raw token counts don't. The token gap is closed — pick MCP when the LLM orchestrates (editors, chat), CLI when you have a filesystem agent (CI, terminal). Stop picking based on token anxiety.
 -->
 
 ---
@@ -481,12 +461,9 @@ layout: default
 <div class="mt-[6vh] space-y-6 text-lg max-w-2xl mx-auto">
 
 <div>✔ One spec per critical journey. Three, not thirty.</div>
-<div>✔ Run on every commit. Trace on failure.</div>
+<div>✔ Run on every commit. Playwright traces on failure.</div>
 <div>✔ Treat flake as a bug — <a href="https://flakiness.io/" class="underline decoration-dotted">flakiness.io</a> for CI health.</div>
 <div>✔ Screenshots, traces, videos = reviewable receipts.</div>
-<div class="ml-6 text-sm opacity-60">
-  <code>video-start</code> / <code>start-chapter</code> — agents record narrated walkthroughs, not just pass/fail.
-</div>
 <div>✔ The agent doesn't own the test suite. You do.</div>
 
 </div>
@@ -507,7 +484,14 @@ Tests encode what "correct" means.<br/>
 Agents are how you get there. Browser tools are how they see.
 </div>
 
-<div class="mt-16 flex justify-center items-center gap-5 text-sm">
+<div class="mt-12 flex justify-center">
+  <a href="https://github.com/mxschmitt/aicouncil-talk-e2e-testing-with-ai" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-600/50 hover:border-zinc-400/50 !border-none !no-underline opacity-80 hover:opacity-100 text-base">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    Slides, demos & benchmark code
+  </a>
+</div>
+
+<div class="mt-6 flex justify-center items-center gap-5 text-sm">
   <a href="https://max.sh" target="_blank" class="flex items-center gap-1.5 opacity-50 hover:opacity-80 !border-none !no-underline">
     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
     max.sh
