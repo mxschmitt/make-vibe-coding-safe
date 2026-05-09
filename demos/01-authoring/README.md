@@ -14,7 +14,6 @@ Without MCP the agent guesses locators from JSX. With MCP the agent sees the rea
 ## Pre-Demo Checklist
 
 ```bash
-cd demo-app
 npm ci
 npx playwright test              # all green
 ls tests/delete-todo.spec.ts     # should not exist
@@ -26,7 +25,7 @@ ls tests/delete-todo.spec.ts     # should not exist
 
 Paste into Claude Code (no MCP configured):
 
-> The demo-app at `./demo-app` is a Next.js todo app. There is a delete button on each todo item, but no test covers it. Write a Playwright test in `demo-app/tests/delete-todo.spec.ts` that signs up a new user, adds a todo, deletes it, and verifies it is gone. Use the existing fixtures in `tests/fixtures.ts`. Then run the tests and confirm it passes.
+> This is a Next.js todo app. There is a delete button on each todo item, but no test covers it. Write a Playwright test in `tests/delete-todo.spec.ts` that signs up a new user, adds a todo, deletes it, and verifies it is gone. Use the existing fixtures in `tests/fixtures.ts`. Then run the tests and confirm it passes.
 
 ### Expected Agent Behavior
 
@@ -43,7 +42,7 @@ Paste into Claude Code (no MCP configured):
 ### Cleanup Before Part B
 
 ```bash
-rm demo-app/tests/delete-todo.spec.ts
+rm tests/delete-todo.spec.ts
 ```
 
 ---
@@ -54,7 +53,7 @@ rm demo-app/tests/delete-todo.spec.ts
 
 Paste into Claude Code (with Playwright MCP configured):
 
-> The demo-app at `./demo-app` is a Next.js todo app. Use Playwright MCP to navigate to the running app, sign up a new user, add a todo, and explore the delete flow. Then write a Playwright test in `demo-app/tests/delete-todo.spec.ts` that covers deleting a todo. Use the existing fixtures in `tests/fixtures.ts`. Run the tests and confirm it passes.
+> This is a Next.js todo app. Use Playwright MCP to navigate to the running app, sign up a new user, add a todo, and explore the delete flow. Then write a Playwright test in `tests/delete-todo.spec.ts` that covers deleting a todo. Use the existing fixtures in `tests/fixtures.ts`. Run the tests and confirm it passes.
 
 ### Expected Agent Behavior
 
@@ -73,7 +72,7 @@ Paste into Claude Code (with Playwright MCP configured):
 ## Cleanup
 
 ```bash
-rm demo-app/tests/delete-todo.spec.ts
+rm tests/delete-todo.spec.ts
 ```
 
 ## Fallback
