@@ -54,7 +54,7 @@ rm demo-app/tests/delete-todo.spec.ts
 
 Paste into Claude Code (with Playwright MCP configured):
 
-> The demo-app at `./demo-app` is a Next.js todo app. Use Playwright MCP to navigate to the running app, sign up a new user, add a todo, and explore the delete flow. Look at the accessibility snapshot to find the right locators. Then write a Playwright test in `demo-app/tests/delete-todo.spec.ts` that covers deleting a todo. Use the existing fixtures in `tests/fixtures.ts`. Run the tests and confirm it passes.
+> The demo-app at `./demo-app` is a Next.js todo app. Use Playwright MCP to navigate to the running app, sign up a new user, add a todo, and explore the delete flow. Then write a Playwright test in `demo-app/tests/delete-todo.spec.ts` that covers deleting a todo. Use the existing fixtures in `tests/fixtures.ts`. Run the tests and confirm it passes.
 
 ### Expected Agent Behavior
 
