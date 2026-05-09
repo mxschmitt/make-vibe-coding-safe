@@ -178,7 +178,7 @@ layout: center
     <div class="text-center">
       <div class="mx-auto h-4 w-4 rounded-full bg-fuchsia-500 ring-4 ring-fuchsia-500/20"></div>
       <div class="mt-3 text-xs opacity-60 uppercase tracking-wider">2026</div>
-      <div class="mt-2 text-sm font-medium">Agents can see the browser</div>
+      <div class="mt-2 text-sm font-medium">Coding agents can see the browser</div>
       <div class="mt-1 text-xs opacity-70">Playwright CLI · Chrome DevTools MCP · agent-browser</div>
     </div>
   </div>
@@ -210,8 +210,8 @@ class: text-center
   <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② Debug loop · ~4 min</div>
   <div class="text-lg font-medium">Agent fixes a failing test</div>
   <div class="mt-3 text-sm opacity-80">
-    Existing test fails on <code>demo/broken-konami</code> → agent reads the trace → finds the bug → reruns. Green.<br/>
-    <span class="opacity-60">The agent inspects the trace viewer — not re-reads the source.</span>
+    Existing test fails on <code>demo/stale-toggle</code> → agent reads the trace → sees optimistic UI lied (toggle never persisted) → fixes swapped params → green.<br/>
+    <span class="opacity-60">The diff looks like a valid React 19 refactor — only the trace reveals the silent failure.</span>
   </div>
 </div>
 
@@ -227,12 +227,12 @@ Half ①  Authoring (~3 min)
   4. Green. Point at the committed spec. "That's the artifact."
 
 Half ②  Debug loop (~4 min)
-  1. git checkout demo/broken-konami. Konami test now fails.
+  1. git checkout demo/stale-toggle -- src/app/actions.ts src/app/app/todo-list.tsx. The critical-path test now fails.
   2. Prompt: "run the Playwright tests, find what's broken, fix it."
-  3. Let it run. Konami test fails. Agent opens the trace (playwright show-trace) — emphasize: it's reading the failure, not the source.
-  4. Agent spots the L/R swap in konami-listener.tsx, fixes it.
-  5. Rerun. Green. Show the trace-viewer timeline as the receipt.
-  6. Land: "agent wasn't guessing. Saw the real browser, saw the real failure, left receipts."
+  3. Let it run. auth-and-todos test fails at "Active" filter (expects 4, gets 5). Agent opens the trace.
+  4. Trace shows: toggle button clicked, optimistic UI flipped data-completed to "true", but after navigating to Active tab all 5 items are still there. The toggle never persisted — params were swapped during the useOptimistic refactor.
+  5. Agent reads actions.ts + todos.ts, spots toggleTodo(id, userId) should be toggleTodo(userId, id). Fixes. Reruns. Green.
+  6. Land: "The diff looked like a valid refactor. The trace showed the toggle did nothing."
 
 If you run long, cut ①'s rerun or ②'s final green — the fix moment is the one beat that must land.
 -->
@@ -260,7 +260,7 @@ class: text-center
   <div class="text-lg font-medium mt-3">The agent read the real failure — not a stack trace.</div>
   <div class="mt-4 text-sm opacity-80">
     <code>npx playwright trace</code> — new in 1.59.<br/>
-    The Playwright team got us covered.
+    New in Playwright v1.59.
   </div>
 </div>
 
@@ -347,7 +347,7 @@ layout: center
     <div class="text-5xl font-bold text-green-400">26.8k <span class="text-lg font-normal opacity-75">tokens</span></div>
   </div>
   <div class="text-sm opacity-60">
-    MCP routes state <em>through</em> the LLM. CLI routes state <em>around</em> it.
+    MCP routes context <em>through</em> the LLM. CLI routes context <em>around</em> it.
   </div>
 </div>
 
@@ -484,6 +484,9 @@ layout: default
 <div>✔ Run on every commit. Trace on failure.</div>
 <div>✔ Treat flake as a bug — <a href="https://flakiness.io/" class="underline decoration-dotted">flakiness.io</a> for CI health.</div>
 <div>✔ Screenshots, traces, videos = reviewable receipts.</div>
+<div class="ml-6 text-sm opacity-60">
+  <code>video-start</code> / <code>start-chapter</code> — agents record narrated walkthroughs, not just pass/fail.
+</div>
 <div>✔ The agent doesn't own the test suite. You do.</div>
 
 </div>
@@ -497,11 +500,11 @@ layout: center
 class: text-center
 ---
 
-# Tests are the durable artifact.
+# Implementation is cheap. Confidence isn't.
 
 <div class="mt-8 text-2xl opacity-75">
-Agents are how you get there.<br/>
-Browser tools are how the agent sees.
+Tests encode what "correct" means.<br/>
+Agents are how you get there. Browser tools are how they see.
 </div>
 
 <div class="mt-16 flex justify-center items-center gap-5 text-sm">
