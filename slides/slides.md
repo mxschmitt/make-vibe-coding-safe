@@ -198,48 +198,49 @@ layout: center
 class: text-center
 ---
 
-# Demo — 7 minutes, two halves
+# Demo — 3 minutes
 
 <div class="mt-10 grid grid-cols-2 gap-8">
 
 <div class="p-6 rounded-lg border border-indigo-500/30 bg-indigo-900/10">
-  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">① Authoring · ~3 min</div>
-  <div class="text-lg font-medium">Agent writes a test</div>
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">① Without MCP · ~1.5 min</div>
+  <div class="text-lg font-medium">Agent infers locators from source</div>
   <div class="mt-3 text-sm opacity-80">
-    New feature request → agent writes the Playwright spec → runs it → green.<br/>
-    <span class="opacity-60">Claude Code · Playwright CLI + skills.</span>
+    Agent reads component source → guesses locators from JSX → writes test → runs it → green.<br/>
+    <span class="opacity-60">Claude Code · Playwright CLI.</span>
   </div>
 </div>
 
 <div class="p-6 rounded-lg border border-fuchsia-500/30 bg-fuchsia-900/10">
-  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② Debug loop · ~4 min</div>
-  <div class="text-lg font-medium">Agent fixes a failing test</div>
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② With MCP · ~1.5 min</div>
+  <div class="text-lg font-medium">Agent discovers locators from the live page</div>
   <div class="mt-3 text-sm opacity-80">
-    Existing test fails on <code>demo/stale-toggle</code> → agent reads the trace → sees optimistic UI lied (toggle never persisted) → fixes swapped params → green.<br/>
-    <span class="opacity-60">The diff looks like a valid React 19 refactor — only the trace reveals the silent failure.</span>
+    Agent navigates the running app via Playwright MCP → gets accessibility snapshot → sees real roles and labels → writes test → green.<br/>
+    <span class="opacity-60">Claude Code · Playwright MCP + CLI.</span>
   </div>
 </div>
 
 </div>
 
 <!--
-(4:00) Seven minutes, split 3/4. Keep the beats as cues, not a script.
+(4:00) Three minutes, split evenly. Same task both times: write a "delete todo" test.
 
-Half ①  Authoring (~3 min)
-  1. Show demo-app running. Pick one missing journey (e.g. "log out from the landing page," or "can't sign up with a duplicate email").
-  2. Prompt Claude Code: "add a Playwright test for <journey>, then run it."
-  3. Let the agent navigate with the CLI, write the spec file, run it. Highlight: the CLI puts snapshot/screenshot on disk; agent decides what to read.
-  4. Green. Point at the committed spec. "That's the artifact."
+Part ①  Without MCP (~1.5 min)
+  1. Show demo-app running. No MCP configured.
+  2. Prompt Claude Code: "write a Playwright test for deleting a todo, then run it."
+  3. Agent reads fixtures.ts + TSX source, infers locators from JSX, writes the spec.
+  4. Runs `npx playwright test delete-todo` — green.
+  5. Narrate: "It worked — but the agent never saw the real app. It guessed from source."
 
-Half ②  Debug loop (~4 min)
-  1. git checkout demo/stale-toggle -- src/app/actions.ts src/app/app/todo-list.tsx. The critical-path test now fails.
-  2. Prompt: "run the Playwright tests, find what's broken, fix it."
-  3. Let it run. auth-and-todos test fails at "Active" filter (expects 4, gets 5). Agent opens the trace.
-  4. Trace shows: toggle button clicked, optimistic UI flipped data-completed to "true", but after navigating to Active tab all 5 items are still there. The toggle never persisted — params were swapped during the useOptimistic refactor.
-  5. Agent reads actions.ts + todos.ts, spots toggleTodo(id, userId) should be toggleTodo(userId, id). Fixes. Reruns. Green.
-  6. Land: "The diff looked like a valid refactor. The trace showed the toggle did nothing."
+Part ②  With MCP (~1.5 min)
+  1. Delete the test. Enable Playwright MCP.
+  2. Same prompt, but add: "use Playwright MCP to explore the app first."
+  3. Agent navigates to the app, signs up, adds a todo, reads the accessibility snapshot.
+  4. Agent sees exact roles/labels in the snapshot, writes the test using discovered locators.
+  5. Runs `npx playwright test delete-todo` — green.
+  6. Narrate: "This time the locators came from reality, not from reading JSX."
 
-If you run long, cut ①'s rerun or ②'s final green — the fix moment is the one beat that must land.
+Land: "On a small app both work. On a real codebase with dynamic labels and third-party components — MCP is the difference between guessing and knowing."
 -->
 
 ---
@@ -252,27 +253,27 @@ class: text-center
 <div class="mt-10 grid grid-cols-2 gap-8">
 
 <div class="p-6 rounded-lg border border-indigo-500/30 bg-indigo-900/10">
-  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">① Authoring</div>
-  <div class="text-lg font-medium mt-3">The agent authored a test in under a minute.</div>
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">① Without MCP</div>
+  <div class="text-lg font-medium mt-3">Agent read source, inferred locators, test passed.</div>
   <div class="mt-4 text-sm opacity-80">
-    The spec file stays in your repo and runs on every commit.<br/>
-    That's the artifact — not the chat log.
+    Works on small codebases — but the agent is guessing.<br/>
+    The spec file is still the artifact that stays in your repo.
   </div>
 </div>
 
 <div class="p-6 rounded-lg border border-fuchsia-500/30 bg-fuchsia-900/10">
-  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② Debug loop</div>
-  <div class="text-lg font-medium mt-3">The agent read the real failure — not a stack trace.</div>
+  <div class="text-xs uppercase tracking-wider opacity-60 mb-2">② With MCP</div>
+  <div class="text-lg font-medium mt-3">Agent saw the real page, discovered locators, test passed.</div>
   <div class="mt-4 text-sm opacity-80">
-    <code>npx playwright trace</code> — new in 1.59.<br/>
-    New in Playwright v1.59.
+    Accessibility snapshot → real roles and labels.<br/>
+    The agent sees what the browser sees, not what the code suggests.
   </div>
 </div>
 
 </div>
 
 <!--
-(11:00) Twenty seconds max. Let the demo breathe. Left panel: the test file is what you keep. Right panel: 1.59 made the trace CLI possible — that's what let the agent read the failure instead of guessing. Don't linger; move to the tooling slide.
+(7:00) Twenty seconds max. Let the demo breathe. Left panel: both approaches produce a working test file — that's the artifact. Right panel: MCP gives the agent real locators from the rendered page instead of guessing from source. Don't linger; move to the tooling slide.
 -->
 
 ---
