@@ -56,14 +56,14 @@ npm run benchmark:mcp      # MCP only
 npm run benchmark:cli      # CLI only
 ```
 
-Key finding from the Playwright team's own comparison: **26.8k tokens** (CLI) vs **114k tokens** (MCP) on the same task --- ~4.25x cheaper with CLI because the coding agent writes state to disk instead of routing it through the LLM context.
+In mid-2025, the Playwright team showed CLI was ~4.25x cheaper: **26.8k tokens** (CLI) vs **114k tokens** (MCP) on the same task. Then Anthropic shipped resource links, Skills, and code-execution-with-MCP. Our May 2026 re-run on the same task shows the gap has flipped: **$0.36/run** (MCP) vs **$0.44/run** (CLI). Pick based on your architecture, not on 2025 benchmarks.
 
 ## Talk overview
 
 1. **The problem** -- AI-generated features look right in a demo, then break on the next iteration
 2. **The loop** -- Agent writes code, runs Playwright tests, inspects traces, fixes failures
 3. **Tool comparison** -- Playwright CLI + skills, Playwright MCP, Chrome DevTools MCP, agent-browser
-4. **Token efficiency** -- Why CLI is 4x cheaper than MCP (who holds the state)
+4. **Token efficiency** -- The 2025 gap (CLI was 4x cheaper), Anthropic's fixes, and our 2026 re-run where MCP won
 5. **Takeaway** -- Keep the suite small, high-signal, and tied to critical journeys; agents are how you get there, tests are what you keep
 
 ## CI
@@ -78,6 +78,7 @@ Key finding from the Playwright team's own comparison: **26.8k tokens** (CLI) vs
 - **Parallel agents** — [Conductor](https://conductor.build) lets you work on multiple things at once
 - **Version control** — git history, diffs, and PRs for every slide change
 - **Close to code** — slides live next to the app and tests they describe
+- **Slidev Claude Code skill** — [sli.dev/guide/work-with-ai](https://sli.dev/guide/work-with-ai) + agent-browser to validate on localhost
 
 ## License
 
