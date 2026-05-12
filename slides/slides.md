@@ -304,31 +304,6 @@ The test suite lives in your repo for years.<br/>
 -->
 
 ---
-layout: default
----
-
-# Adoption — last 12 months
-
-<div class="mt-4 flex justify-center">
-  <img
-    src="/npmtrends.png"
-    alt="npm download trends: Playwright MCP, Playwright CLI, Chrome DevTools MCP, agent-browser"
-    class="rounded-lg"
-    style="max-height: 420px;"
-  />
-</div>
-
-<div class="mt-3 text-xs opacity-60 text-center">
-  <a href="https://npmtrends.com/@playwright/mcp-vs-@playwright/cli-vs-chrome-devtools-mcp-vs-agent-browser">
-    npmtrends.com · @playwright/mcp · @playwright/cli · chrome-devtools-mcp · agent-browser
-  </a>
-</div>
-
-<!--
-(11:45) Category is converging. Three of the four are on steep ramps; agent-browser shows up late because it only went public in January. Don't read numbers to the audience — point at the shape.
--->
-
----
 layout: center
 ---
 
