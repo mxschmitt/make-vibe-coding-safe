@@ -190,7 +190,7 @@ layout: center
 </div>
 
 <!--
-(3:00) Sixty-second flyover. Browser automation existed long before agents — Selenium, Puppeteer, Playwright. Late 2024, agents got access: Computer Use showed an LLM driving a desktop, MCP gave tools a protocol. 2025, everyone shipped their version — Playwright MCP, Operator, Nova Act, Test Agents. Now in 2026, the tooling works: Playwright CLI, Chrome DevTools MCP, agent-browser. The agent can see the browser. Let me show you.
+(3:00) Sixty-second flyover. Browser automation existed long before agents — Selenium, Puppeteer, Playwright. Late 2024, agents got access: Computer Use showed an LLM driving a desktop, MCP gave tools a protocol. 2025, everyone shipped their version — Playwright MCP, Operator, Nova Act, Test Agents. Test Agents also shipped Playwright Test MCP — a separate server that gives agents test-runner control (list, run, debug). Now in 2026, the tooling works: Playwright CLI, Chrome DevTools MCP, agent-browser. The agent can see the browser. Let me show you.
 -->
 
 ---
@@ -280,7 +280,7 @@ class: text-center
 layout: default
 ---
 
-# Browser tools for coding agents · 2026
+# Tools for coding agents · 2026
 
 <div class="mt-[6vh] text-sm">
 
@@ -290,6 +290,7 @@ layout: default
 | <img src="/playwright-logo.svg" class="inline-block h-5 w-5 mr-1 align-text-bottom" /> **Playwright MCP** | Editor agents, accessibility snapshots | 31.7k |
 | <img src="/chrome-logo.svg" class="inline-block h-5 w-5 mr-1 align-text-bottom" /> **Chrome DevTools MCP** | Chrome-specific perf / console / network | 37.6k |
 | <img src="/vercel-logo.svg" class="inline-block h-5 w-5 mr-1 align-text-bottom" /> **agent-browser** (Vercel Labs) | Designed for AI agents · compact text output | 30.9k |
+| <img src="/playwright-logo.svg" class="inline-block h-5 w-5 mr-1 align-text-bottom" /> **Playwright Test MCP** | Test runner — list, run, debug, write tests | — |
 
 </div>
 
@@ -300,7 +301,11 @@ The test suite lives in your repo for years.<br/>
 </div>
 
 <!--
-(11:00) One-minute overview of the landscape. Chrome DevTools MCP leads on raw stars. Playwright MCP leads in vendor recommendations for test authoring. agent-browser is the youngest (January 2026 public) and pitches itself explicitly at AI agents — compact text output, accessibility-tree refs, native Rust. But — don't get lost in the tool war. These tools are ~1 year old; the Playwright spec file in your repo will still be running a year from now. That's what you keep.
+(11:00) One-minute overview of the landscape. The first four rows are browser tools — they give the agent eyes on the page. Chrome DevTools MCP leads on raw stars. Playwright MCP leads in vendor recommendations for test authoring. agent-browser is the youngest (January 2026 public) and pitches itself explicitly at AI agents — compact text output, accessibility-tree refs, native Rust.
+
+The last row is different: Playwright Test MCP gives agents test-runner control — list tests, run a specific test, debug a failure, retrieve the log, write a new test. It shipped with Test Agents in v1.56 (October 2025). Two Playwright MCP servers: one for seeing the browser, one for managing tests. Our demo app uses the Test MCP — check .mcp.json.
+
+But — don't get lost in the tool war. These tools are ~1 year old; the Playwright spec file in your repo will still be running a year from now. That's what you keep.
 -->
 
 ---

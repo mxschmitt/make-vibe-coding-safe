@@ -82,6 +82,30 @@ Relevant setup:
 
 Talk angle: "MCP is excellent when the agent needs an interactive browser sense inside the editor, especially for exploration, self-healing, and persistent state."
 
+## Playwright Test MCP Notes
+
+Use when the agent needs to control the test runner — list available tests, run specific tests, debug failures, retrieve logs, write new tests — without shelling out.
+
+Package: Ships as part of `@playwright/test` (v1.56+). No separate npm install.
+
+Invocation: `npx playwright run-test-mcp-server`
+
+Demo app `.mcp.json` already configures this.
+
+Key tools exposed:
+- List tests in the project
+- Run tests (all or specific)
+- Debug single test
+- Retrieve test log
+- Write test
+
+Relationship to Playwright MCP (`@playwright/mcp`):
+- Playwright MCP = browser automation (navigate, click, fill, snapshot). Agent SEES the app.
+- Playwright Test MCP = test runner control (run, list, debug, results). Agent MANAGES tests.
+- They are complementary — an agent can use both simultaneously.
+
+Talk angle: "Playwright MCP lets the agent see the browser. Playwright Test MCP lets the agent run the tests. They compose — your agent can explore the app AND manage the test suite."
+
 ## Chrome DevTools MCP Notes
 
 Use when Chrome's own debugging surface matters more than cross-browser Playwright semantics.

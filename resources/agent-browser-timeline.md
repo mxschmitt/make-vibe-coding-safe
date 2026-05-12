@@ -9,6 +9,7 @@ Purpose: dated, most-recent-first timeline of agent-driven browser automation, t
 - 2026-04-01 — Playwright v1.59.0: `browser.bind()`, `--debug=cli`, screencast with chapters. See `playwright-release-notes.md`.
 - 2025-11-25 — Playwright v1.57.0: Speedboard reporter, Chrome for Testing, dynamic webServer ports.
 - 2025-10-06 — Playwright v1.56.0: Test Agents (planner/generator/healer), `npx playwright init-agents`.
+- 2025-10-06 — Playwright Test MCP ships as part of v1.56.0 (`npx playwright run-test-mcp-server`), alongside Test Agents.
 
 ## Coding-Agent Recommendations As Of 2026-04-25
 
