@@ -27,7 +27,7 @@ export default defineConfig({
   webServer: {
     command: "npm run build && npm run start",
     wait: {
-      stdout: /localhost:(?<PORT>\d+)/,
+      stdout: new RegExp("localhost:(?<PORT>\\d+)"),
     },
     timeout: 120_000,
     reuseExistingServer: !process.env.CI,
