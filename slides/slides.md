@@ -382,9 +382,9 @@ layout: default
 <thead>
 <tr class="text-sm opacity-60">
   <th class="text-left py-2">Metric</th>
-  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Claude Code SDK · Sep 2025</span></th>
-  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Claude Code SDK · May 2026</span></th>
-  <th class="py-2">CLI + skills<br/><span class="text-xs opacity-50">Claude Code SDK · May 2026</span></th>
+  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Claude Code · Sep 2025</span></th>
+  <th class="py-2">MCP<br/><span class="text-xs opacity-50">Claude Code · May 2026</span></th>
+  <th class="py-2">CLI + skills<br/><span class="text-xs opacity-50">Claude Code · May 2026</span></th>
 </tr>
 </thead>
 <tbody class="text-lg">
@@ -417,7 +417,7 @@ layout: default
 </div>
 
 <div class="mt-6 text-sm opacity-60 text-center">
-Same task as the viral video. Claude Code SDK (Sept 2025 vs May 2026), Sonnet, 3 runs each. This is a cost benchmark (eval), not a quality eval.
+Same task as the viral video. Claude Code (Sept 2025 vs May 2026), Sonnet, 3 runs each. This is a cost benchmark (eval), not a quality eval.
 </div>
 
 <div class="mt-4 text-center text-base opacity-90">
@@ -425,7 +425,7 @@ The token gap is closed. Pick based on your architecture, not on 2025 benchmarks
 </div>
 
 <!--
-(12:00) Same task as the Playwright team video. We ran it on the old Claude Code SDK from September 2025 — before Skills, before code-execution-with-MCP — then again on the May 2026 SDK that ships with all those fixes baked in. Old MCP cost $0.80 per run and needed 53 turns. Current MCP costs $0.36 in 19 turns. CLI costs $0.44 in 33 turns. MCP went from most expensive to cheapest — 2.2× cheaper than it was, and now 18% cheaper than CLI. Why cost and not raw tokens? Because cached tokens cost ~10× less than fresh ones, and MCP's improvement comes partly from better caching. Cost accounts for that; raw token counts don't. The token gap is closed — pick MCP when the LLM orchestrates (editors, chat), CLI when you have a filesystem agent (CI, terminal). Stop picking based on token anxiety.
+(12:00) Same task as the Playwright team video. We ran it on the old Claude Code from September 2025 — before Skills, before code-execution-with-MCP — then again on the May 2026 SDK that ships with all those fixes baked in. Old MCP cost $0.80 per run and needed 53 turns. Current MCP costs $0.36 in 19 turns. CLI costs $0.44 in 33 turns. MCP went from most expensive to cheapest — 2.2× cheaper than it was, and now 18% cheaper than CLI. Why cost and not raw tokens? Because cached tokens cost ~10× less than fresh ones, and MCP's improvement comes partly from better caching. Cost accounts for that; raw token counts don't. The token gap is closed — pick MCP when the LLM orchestrates (editors, chat), CLI when you have a filesystem agent (CI, terminal). Stop picking based on token anxiety.
 -->
 
 ---
