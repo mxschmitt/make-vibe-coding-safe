@@ -1,8 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import { join } from "node:path";
 
-const PORT = 3010;
-const BASE_URL = `http://localhost:${PORT}`;
 const TEST_DB = join(process.cwd(), "data", "test.db");
 const AUTH_SECRET =
   process.env.AUTH_SECRET ?? "ci-dummy-secret-at-least-32-bytes-long-for-authjs";
@@ -17,7 +15,7 @@ export default defineConfig({
   reporter: process.env.CI ? [["list"], ["html", { open: "never" }]] : "list",
 
   use: {
-    baseURL: BASE_URL,
+    baseURL: `http://localhost:${process.env.PORT}`,
     channel: "chrome",
     trace: "retain-on-failure",
   },
@@ -28,11 +26,13 @@ export default defineConfig({
 
   webServer: {
     command: "npm run build && npm run start",
-    url: BASE_URL,
+    wait: {
+      stdout: /localhost:(?<PORT>\d+)/,
+    },
     timeout: 120_000,
     reuseExistingServer: !process.env.CI,
     env: {
-      PORT: String(PORT),
+      PORT: "0",
       DATABASE_PATH: TEST_DB,
       AUTH_SECRET,
     },
