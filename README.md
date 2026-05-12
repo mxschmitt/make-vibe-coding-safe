@@ -69,7 +69,7 @@ In mid-2025, the Playwright team showed CLI was ~4.25x cheaper: **26.8k tokens**
 ## CI
 
 - **Tests**: Playwright tests run on every push and PR to `main` ([ci.yml](.github/workflows/ci.yml))
-- **Slides**: Built and deployed to [GitHub Pages](https://mxschmitt.github.io/aicouncil-talk-e2e-testing-with-ai/) on push to `main` ([deploy-pages.yml](.github/workflows/deploy-pages.yml))
+- **Slides**: Built and deployed to [GitHub Pages](https://mxschmitt.github.io/make-vibe-coding-safe/) on push to `main` ([deploy-pages.yml](.github/workflows/deploy-pages.yml))
 
 ## Learnings — making this talk with AI
 
