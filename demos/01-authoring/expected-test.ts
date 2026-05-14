@@ -12,7 +12,10 @@ test("delete a todo removes it from the list", async ({ page }) => {
   await expect(items).toHaveCount(before + 1);
 
   await page
-    .getByRole("button", { name: 'Delete "Temporary todo"' })
+    .getByRole("button", { name: 'Remove "Temporary todo"' })
+    .click();
+  await page
+    .getByRole("button", { name: 'Confirm removal of "Temporary todo"' })
     .click();
 
   await expect(items).toHaveCount(before);

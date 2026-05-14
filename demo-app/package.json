@@ -12,6 +12,7 @@
     "test:debug": "playwright test --debug"
   },
   "dependencies": {
+    "@acme/ui": "file:./packages/acme-ui",
     "@auth/core": "^0.41.2",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.9.0",

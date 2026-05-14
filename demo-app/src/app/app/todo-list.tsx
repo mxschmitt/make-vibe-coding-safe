@@ -1,6 +1,7 @@
 import { toggleTodoAction, deleteTodoAction } from "@/app/actions";
 import type { Todo } from "@/lib/todos";
 import type { Filter } from "./filter-tabs";
+import { DeleteButton } from "./delete-button";
 
 function EmptyState({ hasAny, filter }: { hasAny: boolean; filter: Filter }) {
   if (!hasAny) {
@@ -75,15 +76,10 @@ export function TodoList({
           >
             {todo.title}
           </span>
-          <form action={deleteTodoAction.bind(null, todo.id)}>
-            <button
-              type="submit"
-              aria-label={`Delete "${todo.title}"`}
-              className="text-xs text-zinc-400 hover:text-red-600"
-            >
-              Delete
-            </button>
-          </form>
+          <DeleteButton
+            todoTitle={todo.title}
+            deleteAction={deleteTodoAction.bind(null, todo.id)}
+          />
         </li>
       ))}
     </ul>

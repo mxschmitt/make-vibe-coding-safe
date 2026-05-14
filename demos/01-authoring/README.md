@@ -9,7 +9,7 @@ Show the same task — write a Playwright test for "delete a todo" — two ways.
 
 ## Takeaway for the Audience
 
-Without MCP the agent guesses locators from JSX. With MCP the agent sees the real rendered page — roles, labels, names — and picks locators that match reality. Both produce a working test file that stays in your repo.
+Without MCP the agent reads `delete-button.tsx`, sees `<ConfirmButton label="Delete" itemName={todoTitle} ... />` from `@acme/ui`, and assumes the button name is "Delete". In reality the library renders `aria-label="Remove \"...\""` and requires a two-click confirmation. The agent can't know this without either reading into the library source (which agents typically skip for node_modules) or seeing the live page. With MCP the agent sees the real rendered accessibility tree and gets correct locators + discovers the confirm step immediately.
 
 ## Pre-Demo Checklist
 
@@ -29,15 +29,18 @@ Paste into Claude Code (no MCP configured):
 
 ### Expected Agent Behavior
 
-1. Agent reads `tests/fixtures.ts`, `tests/auth-and-todos.spec.ts`, and the todo-list component source
-2. Agent **infers** locators from JSX (reads `aria-label`, `data-testid`, button text in source)
-3. Agent writes `tests/delete-todo.spec.ts`
-4. Agent runs `npx playwright test delete-todo` — passes
+1. Agent reads `tests/fixtures.ts`, `tests/auth-and-todos.spec.ts`, and `src/app/app/delete-button.tsx`
+2. Agent sees `<ConfirmButton label="Delete" itemName={todoTitle} onConfirm={...} />` from `@acme/ui`
+3. Agent infers the button is named "Delete" (the `label` prop) — uses `getByRole("button", { name: 'Delete "..."' })`
+4. Agent writes `tests/delete-todo.spec.ts` — likely a single click with wrong locator
+5. Agent runs `npx playwright test delete-todo` — **FAILS** (timeout: no button with name `Delete "..."`)
+6. Agent reads the error, may try `getByText("Delete")` or other guesses, eventually discovers the correct labels after retries
 
 ### What to Narrate
 
-- "The agent read source files to figure out what locators to use — it never saw the running app"
-- "This works on a small codebase, but on a real app with dynamic labels, i18n, or third-party components, the agent is guessing"
+- "The agent read the source — it sees `label='Delete'` but the library renders `aria-label='Remove ...'`"
+- "This is exactly what happens with real component libraries — Radix, MUI, shadcn all compute their own accessibility labels"
+- "The agent needed retries to discover both the correct label AND the confirmation step — wasted time and tokens"
 
 ### Cleanup Before Part B
 
@@ -59,15 +62,17 @@ Paste into Claude Code (with Playwright MCP configured):
 
 1. Agent uses Playwright MCP to `navigate` to the app
 2. Agent interacts with the live page — signs up, adds a todo
-3. Agent reads the **accessibility snapshot** and sees real roles/labels (e.g., `button "Delete \"Temporary todo\""`)
-4. Agent writes `tests/delete-todo.spec.ts` using locators **discovered from the live page**
-5. Agent runs `npx playwright test delete-todo` — passes
+3. Agent reads accessibility snapshot — sees `button "Remove \"Temporary todo\""` (exact label, no guessing)
+4. Agent clicks it, reads new snapshot — sees `button "Confirm removal of \"Temporary todo\""` appear
+5. Agent clicks confirm, todo disappears — full flow discovered from live interaction
+6. Agent writes `tests/delete-todo.spec.ts` with correct locators and both clicks
+7. Agent runs `npx playwright test delete-todo` — passes first time
 
 ### What to Narrate
 
-- "This time the agent browsed the real app and got an accessibility snapshot"
-- "The locators came from what the browser actually rendered — not from reading JSX"
-- "On a real codebase with computed labels or third-party UI, this is the difference between guessing and knowing"
+- "The agent saw `Remove` not `Delete` in the snapshot — it never had to guess from button text"
+- "It discovered the confirmation step by interacting, not by reading state machine code"
+- "Correct locators + correct flow = passes first try, zero retries"
 
 ## Cleanup
 
